@@ -1,0 +1,17 @@
+<div class="spinner">
+   <div class="spinner-background" data-bind="css: {'visible': isActivated(), 'backgroundTransparent': $component.backgroundTransparent}, attr: {'show-background': $component.showBackground}">
+      <!-- ko if: $component.style == 'Horizontal' -->
+      <div class="loadFacebookG">
+         <div class="blockG_1 facebook_blockG"></div>
+         <div class="blockG_2 facebook_blockG"></div>
+         <div class="blockG_3 facebook_blockG"></div>
+      </div>
+      <!-- /ko -->
+
+      <!-- ko if: $component.style != 'Horizontal' -->
+      <div class="spinner-icon" data-bind="attr: {'spinner-style': $component.style}">
+         <i class="fa fa-spinner fa-spin spin-fast"></i>
+      </div>
+      <!-- /ko -->
+   </div>
+</div>

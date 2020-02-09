@@ -1,0 +1,19 @@
+<div class="container app-dropdown-dialog">
+    <div class="toggle" data-bind="click: $component.toggleVisible.bind($component), css: { 'toggled': $component.contentVisible() }">
+        <!-- ko if: $component.contentVisible() -->
+        <i class="fas fa-caret-up"></i>
+        <!-- /ko -->
+
+        <!-- ko if: !$component.contentVisible() -->
+        <i class="fas fa-caret-down"></i>
+        <!-- /ko -->
+    </div>
+
+    <!-- ko if: $component.contentVisible() -->
+    <div class="content">
+        <!-- ko foreach: $component.items -->
+        <div class="item" data-bind="click: $component.itemClick.bind($component, $data), text: $data[$component.textVariableId()], attr: { 'title': $data[$component.textVariableId()] }"></div>
+        <!-- /ko -->
+    </div>
+    <!-- /ko -->
+</div>

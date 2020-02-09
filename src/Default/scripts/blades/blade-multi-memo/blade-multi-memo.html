@@ -1,0 +1,92 @@
+<div class="tabs n-h">
+    <div class="tab" data-bind="click: $blade.changeTab.bind($blade, 'selection'), css: { 'active': $blade.tab() == 'selection' }">By Selection</div>
+    <div class="tab" data-bind="click: $blade.changeTab.bind($blade, 'filter'), css: { 'active': $blade.tab() == 'filter' }">By Filters</div>
+</div>
+
+<div class="content">
+    <!-- ko if: $blade.isLoading() -->
+    <div style="position: relative; width: 100%; margin-top: 50px;">
+        <app-spinner></app-spinner>
+    </div>
+    <!-- /ko -->
+
+    <!-- ko if: !$blade.isLoading() -->
+    <!-- ko if: $blade.tab() == 'selection' -->
+    <div class="legend">
+        Click people in the 'add people' area to add recipients to the memo.
+    </div>
+
+    <div class="filtered-row">
+        <app-complex-search
+            params="fullBorder: true, title: 'Recipients', items: $blade.addedUsers, postTitleTextId: 'postText', textVariableId: 'ID', idVariableId: 'ID', disabledClickEvent: $blade.removeUser.bind($blade), disabled: ko.observable(true)">
+        </app-complex-search>
+
+        <app-complex-search
+            params="fullBorder: true, title: 'Add People', items: $blade.users, postTitleTextId: 'postText', textVariableId: 'ID', idVariableId: 'ID', disabledClickEvent: $blade.addUser.bind($blade), disabled: ko.observable(true)">
+        </app-complex-search>
+    </div>
+
+    <div class="message-title">Message</div>
+    <textarea class="message-contents" data-bind="value: $blade.Text"></textarea>
+
+    <button class="send-button" data-bind="click: $blade.send.bind($blade)">Send Message</button>
+    <!-- /ko -->
+
+    <!-- ko if: $blade.tab() == 'filter' -->
+    <div class="legend">
+        Customize the groups and filters which will make up the recipient users of your memo.
+    </div>
+
+    <div class="dropdown-box">
+        <app-dropdown-dialog params="clickEvent: $blade.addFilter.bind($blade), items: $blade.filters"></app-dropdown-dialog>
+    </div>
+
+    <div class="filtered-row-full">
+        <app-complex-search
+            params="title: 'Added Filters', controls: $blade.controls, fullBorder: true, text: 'Added Filters', items: $blade.addedFilters, textVariableId: 'id'">
+        </app-complex-search>
+
+        <div class="right-bubble">
+            <div class="filter-edit-container dotted-back-important">
+                    <!-- ko if: $blade.selectedFilter() == null && $blade.addedFilters().length <= 0 -->
+                    <div class="legend">Add a filter to start customizing your audience.</div>
+                    <!-- /ko -->
+        
+                    <!-- ko if: $blade.selectedFilter() == null && $blade.addedFilters().length > 0 -->
+                    <div class="legend">Select a filter to customize it.</div>
+                    <!-- /ko -->
+        
+                    <!-- ko if: $blade.selectedFilter() != null -->
+                    <div class="title" data-bind="text: $blade.selectedFilter().id"></div>
+        
+                    <div class="legend" data-bind="text: $blade.selectedFilter().description"></div>
+        
+                    <div class="filters-row" data-bind="style: { 'width': $blade.selectedFilter().type == 0 ? '100%' : 'auto' }">
+                        <!-- ko if: $blade.selectedFilter().type == 0 -->
+                        <select style="max-width: 80%; margin: auto;" data-bind="options: $blade.selectedFilter().options, value: $blade.selectedFilter().option, optionsText: function(item) { return item.Name }"></select>
+                        <!-- /ko -->
+            
+                        <!-- ko if: $blade.selectedFilter().type == 1 -->
+                        <!-- ko if: $blade.selectedFilter().operators != null && $blade.selectedFilter().operators().length > 0 -->
+                        <select data-bind="options: $blade.selectedFilter().operators, value: $blade.selectedFilter().operator"></select>
+                        <!-- /ko -->
+            
+                        <app-input params="isNum: true, value: $blade.selectedFilter().option"></app-input>
+                        <!-- /ko -->
+            
+                        <!-- ko if: $blade.selectedFilter().type == 2 -->
+                        <app-checkbox params="checked: $blade.selectedFilter().option"></app-checkbox>
+                        <!-- /ko -->
+                    </div>
+        
+                    <!-- /ko -->
+                </div>
+        
+                <div class="message-title">Message</div>
+                <textarea class="message-contents" data-bind="value: $blade.Text"></textarea>
+                <button class="send-button" data-bind="click: $blade.send.bind($blade)">Send Message</button>
+        </div>
+    </div>
+    <!-- /ko -->
+    <!-- /ko -->
+</div>

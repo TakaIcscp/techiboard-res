@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="slideshow-container">
+        <app-slideshow params="slides: $blade.slides(), paused: $blade.paused"></app-slideshow>
+
+        <div class="controls-group">
+            <div class="but tooltip" data-bind="click: $blade.togglePause.bind($blade)">
+                <!-- ko if: !$blade.paused() -->
+                <i class="fas fa-pause"></i>
+                <!-- /ko -->
+    
+                <!-- ko if: $blade.paused() -->
+                <i class="fas fa-play"></i>
+                <!-- /ko -->
+    
+                <span class="tooltiptext">Pause/Unpause</span>
+            </div>
+            <!-- ko if: $blade.isAdmin() -->
+            <div class="tooltip but" style="margin-left: 2.5px;" data-bind="click: $blade.viewNotices.bind($blade)">
+                <i class="fas fa-cog"></i>
+                <span class="tooltiptext">Manage Notices</span>
+            </div>
+            <!-- /ko -->
+        </div>
+    </div>
+</div>

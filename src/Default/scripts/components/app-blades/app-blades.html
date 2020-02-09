@@ -1,0 +1,10 @@
+<div class="content" data-bind="attr: {'opened-popups': $component.openedPopups() ? true : false}">
+   <!-- ko foreach: blades() -->
+   <app-blade params="blade: $data.blade, options: $data.options, index: $index, isLast: $index() == $component.blades().length - 1"
+              data-bind="attr: {'is-maximized': $data.blade.isMaximized(),
+                                'is-minimized': $data.blade.isMinimized(),
+                                'blade-size': $data.blade.size()
+                              }"
+   ></app-blade>
+   <!-- /ko -->
+</div>

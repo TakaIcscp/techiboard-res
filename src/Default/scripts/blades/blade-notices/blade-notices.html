@@ -1,0 +1,19 @@
+<div class="toolbar">
+    <div class="-ns-fit"></div>
+    <div class="button-group">
+       <button data-bind="click: $blade.newNotice.bind($blade)"><i class="fa fa-plus"></i> New</button>
+    </div>
+</div>
+
+<div class="content">
+    <!-- ko if: $blade.loading() -->
+    <app-spinner class="-ns-fill-all"></app-spinner>
+    <!-- /ko -->
+
+    <!-- ko if: !$blade.loading() -->
+    <!--<app-filtered-search params="items: $blade.filteredData, selected: $blade.filteredSelected"></app-filtered-search>-->
+    <app-complex-search
+        params="preTitleTextId: 'preTitle', textVariableId: 'CreatedByUserID', idVariableId: 'ID', selected: $blade.selectedNotice, items: $blade.data">
+    </app-complex-search>
+    <!-- /ko -->
+</div>

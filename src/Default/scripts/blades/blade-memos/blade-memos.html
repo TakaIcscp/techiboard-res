@@ -1,0 +1,21 @@
+<div class="toolbar">
+    <div class="-ns-fit"></div>
+    <div class="button-group">
+        <button data-bind="click: $blade.newMemo.bind($blade)"><i class="fa fa-plus"></i> New</button>
+        <!-- ko if: $blade.isTeacher() || $blade.isAdmin() -->
+        <button data-bind="click: $blade.newMemos.bind($blade)"><i class="fa fa-plus"></i> New Memos</button>
+        <!-- /ko -->
+    </div>
+</div>
+
+<div class="content">
+    <!-- ko if: $blade.loading() -->
+    <app-spinner class="-ns-fill-all"></app-spinner>
+    <!-- /ko -->
+
+    <!-- ko if: !$blade.loading() -->
+    <app-complex-search
+        params="preTitleTextId: 'preTitle', postTitleTextId: 'postTitle', idVariableId: 'ID', selected: $blade.selectedMemo, items: $blade.data, filters: $blade.filters">
+    </app-complex-search>
+    <!-- /ko -->
+</div>

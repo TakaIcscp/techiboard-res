@@ -1,0 +1,19 @@
+<div class="content">
+    <!-- ko foreach: $blade.rows -->
+
+    <div class="row" data-bind="style: { 'width': $data.length > 3 ? '100%' : '55%' }">
+        <!-- ko foreach: $data -->
+        <div class="teacher-bubble-container">
+            <div class="teacher-bubble">
+                <div class="portrait n-h"><img data-bind="attr: { 'src': $data.image != '' ? $data.image : 'https://invobioscience.com/wp-content/uploads/2016/03/temp-pic.png'}"></div>
+
+                <div class="name-tag" data-bind="text: $data.name"></div>
+                <div class="tag" data-bind="text: $data.position"></div>
+                <div class="tag" style="width: 80%; margin: auto; padding: 0;" data-bind="text: $data.email"></div>
+            </div>
+        </div>
+        <!-- /ko -->
+    </div>
+
+    <!-- /ko -->
+</div>

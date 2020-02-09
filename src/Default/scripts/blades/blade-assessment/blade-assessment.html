@@ -1,0 +1,87 @@
+<!-- ko if: $blade.canEdit() -->
+<div class="toolbar">
+    <div class="-ns-fit"></div>
+    <div class="button-group">
+        <!-- ko if: !$blade.isEditing() -->
+        <button data-bind="click: $blade.toggleEdit.bind($blade)"><i class="fa fa-plus"></i> Edit</button>
+        <!-- /ko -->
+
+        <!-- ko if: $blade.isEditing() -->
+        <button data-bind="click: $blade.save.bind($blade)"><i class="fa fa-plus"></i> Save</button>
+        <!-- ko if: $blade.ID() != null -->
+        <button data-bind="click: $blade.remove.bind($blade)"><i class="fa fa-trash"></i> Delete</button>
+        <button data-bind="click: $blade.cancel.bind($blade)"><i class="fa fa-times"></i> Cancel</button>
+        <!-- /ko -->
+        <!-- /ko -->
+    </div>
+</div>
+<!-- /ko -->
+
+<div class="-ns-margin-big">
+    <div class="row">
+        <label>Tag</label>
+        <input type="text" data-bind="value: $blade.Tag, attr: { 'disabled': !$blade.isEditing() }"></input>
+    </div>
+    <div class="row">
+        <label>Date</label>
+        <input type="date" data-bind="value: $blade.PickingDate, attr: { 'disabled': !$blade.isEditing() }"></input>
+    </div>
+</div>
+
+<!-- ko if: $blade.ID() != null -->
+<div class="grade-grid-container c" data-bind="css: { 'disabled': !$blade.isEditing() } ">
+    <div class="student-row example">
+        <div class="row-box">Student ID</div>
+        <div class="row-box">Marks Obtained</div>
+        <div class="row-box smaller">Letter Mark</div>
+        <div class="row-box smaller">Passed</div>
+        <div class="row-box">Resit Date</div>
+        <div class="row-box smaller">Resit Completed</div>
+    </div>
+
+    <!-- ko if: $blade.isLoadingGrades() -->
+    <div class="height: 80px; width: 100%; position: relative">
+        <app-spinner></app-spinner>
+    </div>
+    <!-- /ko -->
+
+    <!-- ko if: !$blade.isLoadingGrades() -->
+    <!-- ko foreach: $blade.links -->
+    <div class="student-row">
+            <div class="row-box" data-bind="text: $data.ID"></div>
+            <div class="row-box"><input type="number" data-bind="value: $data.Marks, attr: { 'disabled': !$blade.isEditing() }"></div>
+            <div class="row-box smaller"><input type="text" data-bind="value: $data.LetterMark, attr: { 'disabled': !$blade.isEditing() }"></div>
+            <div class="row-box smaller"><input type="checkbox" data-bind="checked: $data.Passed, attr: { 'disabled': !$blade.isEditing() }"></div>
+
+            <div class="row-box">
+                <!-- ko if: $data.noResit() -->N/A<!-- /ko -->
+
+                <!-- ko if: !$data.noResit() -->
+                <input type="date" data-bind="value: $data.ResitDate, attr: { 'disabled': !$blade.isEditing() }">
+                <!-- /ko -->
+
+                <!-- ko if: $blade.isEditing() -->
+                <div class="no-resit-button" data-bind="click: $blade.toggleResit.bind($blade, $data)">
+                    <!-- ko if: $data.noResit() -->
+                    <i style="color: #78ed55;" class="fas fa-check"></i>
+                    <!-- /ko -->
+
+                    <!-- ko if: !$data.noResit() -->
+                    <i style="color: #ed5555;" class="fas fa-times"></i>
+                    <!-- /ko -->
+                </div>
+                <!-- /ko -->
+            </div>
+
+            <div class="row-box smaller">
+                <!-- ko if: $data.noResit() -->N/A<!-- /ko -->
+
+                <!-- ko if: !$data.noResit() -->
+                <input type="checkbox" data-bind="checked: $data.ResitCompleted, attr: { 'disabled': !$blade.isEditing() }">
+                <!-- /ko -->
+            </div>
+    </div>
+    <!-- /ko -->
+    <!-- /ko -->
+</div>
+<!-- /ko -->

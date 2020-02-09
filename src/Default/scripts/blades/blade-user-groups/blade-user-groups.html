@@ -1,0 +1,12 @@
+<!-- ko if: !$blade.selectOnly -->
+<div class="toolbar">
+   <div class="-ns-fit"></div>
+   <div class="button-group">
+      <button data-bind="click: $blade.addNew.bind($blade)"><i class="fa fa-plus"></i> New</button>
+   </div>
+</div>
+<!-- /ko -->
+
+<div class="content">
+      <app-filtered-search params="items: $blade.filteredData, selected: $blade.filteredSelected"></app-filtered-search>
+</div>

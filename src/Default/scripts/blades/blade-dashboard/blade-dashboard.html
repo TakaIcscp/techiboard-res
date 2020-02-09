@@ -1,0 +1,76 @@
+<div class="columns" data-bind="css: { 'mobile': $blade.isMobile() }">
+    <div class="bubbles-column" data-bind="style: { 'width': $blade.isMobile() ? '100%' : '30%' }">
+        <div class="bubble classroom-bubble">
+            <div class="calender-container">
+                <div class="loading-container">
+                    <div class="loading">
+                        <i class="fas fa-spinner"></i>
+                    </div>      
+                    <div class="loading-text">
+                        Loading...
+                    </div>
+                </div>
+
+                <iframe src="https://calendar.google.com/calendar/embed?height=800&wkst=1&bgcolor=%233F51B5&ctz=Pacific%2FAuckland&src=c3R1ZGVudC5yb29tYWxsb2NhdGlvbnNAZ21haWwuY29t&src=Y29wOW03anR0YjZkZjg0NDBtOGpnbWkxYzBAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&src=N2ViZGE0bTVhMWw4ZGRudDY3YnNibXNibmtAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&src=bHQ0Nmpua2RlZm50YnZmbTZqZ29xZnJiOG9AZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&src=cjBxOWNpYW5jcWlvNDZpNTNxMHFmYXZnaTRAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&src=MnVqc2IyMDdmMHNsbWIwMG80anVsZmQ4bmdAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&src=Njg3Z2V1dmhuODluNWVlMGtiY2VhbTdxMmtAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&src=bDRpdWg1ZzVsZzZnbnJ1NnAxampkbWE1MGdAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&src=dGwxZGo4MjNxbTNrajAyOW04Zmwza2UxbjRAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&src=cm9hZjNtdmNwb2NjbmVoNXNmcTMwcjhrbjhAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&src=dTYzcDM1YzExMWNxOGl2cHE5NWx1ODBwajRAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&src=aW1iamViYTloYTRiNXNtNDNwcG9nM2RpYW9AZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&src=ZmpybWFobnM0ZTh1ZmtqYTYyZHU2aGMxNm9AZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&src=ZW4ubmV3X3plYWxhbmQjaG9saWRheUBncm91cC52LmNhbGVuZGFyLmdvb2dsZS5jb20&color=%23039BE5&color=%230B8043&color=%23D81B60&color=%238E24AA&color=%23E67C73&color=%23D50000&color=%23F6BF26&color=%23795548&color=%236e6e6e&color=%233F51B5&color=%234285F4&color=%23EF6C00&color=%23000000&color=%230B8043&showPrint=0&showTz=0&showTitle=0&showTabs=1&mode=AGENDA" style="border-width:0" width="100%" height="100%" frameborder="0" scrolling="no"></iframe>
+            </div>
+        </div>
+    </div>
+    
+    <div class="bubbles-column" data-bind="style: { 'width': $blade.isMobile() ? '100%' : '70%' }">
+        <div class="bubble-row" data-bind="style: { 'height': $blade.isMobile() ? 'auto' : '35%' }">
+            <div class="bubble profile-bubble">
+                <div class="profile-bubble-icon">
+                    <!-- ko if: $blade.profileImage() == null -->
+                    <i class="fas fa-user user-logo"></i>
+                    <!-- /ko -->
+                    
+                    <!-- ko if: $blade.profileImage() != null -->
+                    <img data-bind="attr: { src: $blade.profileImage }">
+                    <!-- /ko -->
+                </div>
+                <!-- ko if: $blade.fullName() != null && $blade.fullName() != '' -->
+                <div class="title" style="width: 62%; height: auto;" data-bind="text: $blade.fullName()"></div>
+                <!-- /ko -->
+                <div class="bubble-text">
+                    <i class="fas fa-key"></i>
+                    <span class="user-type" data-bind="text: $blade.userType()"></span>
+
+                    <!-- ko if: $blade.Profile() != null && $blade.Profile().StudentID != null -->
+                    <div class="studentID" data-bind="text: 'Student # ' + $blade.Profile().StudentID"></div>
+                    <!-- /ko -->
+                </div>
+            </div>
+        
+            <div class="bubble memos-bubble">
+                <div class="icon">
+                    <!-- ko if: $blade.memos().length <= 0 -->
+                    <i class="fas fa-envelope"></i>
+                    <!-- /ko -->
+
+                    <!-- ko if: $blade.memos().length > 0 -->
+                    <i class="rotate-90-cw fas fa-bell"></i>
+                    <!-- /ko -->
+                    
+                </div>
+                
+                <a class="title" data-bind="click: $blade.goToMemos.bind($blade)">Memos</a>
+        
+                <div class="items">
+                    <!-- ko foreach: $blade.memos -->
+                    <div class="item"><span data-bind="text: $data.title"></span><span style="padding-left: 15px;" data-bind="text: $data.postText"></span></div>
+                    <!-- /ko -->
+    
+                    <!-- ko if: $blade.memos().length <= 0 -->
+                    <div class="empty-memo-message">No new memos...</div>
+                    <!-- /ko -->
+                </div>
+            </div>
+        </div>
+
+        <div class="bubble notice-bubble" style="padding: 0; height: 65%;">
+            <div style="position: relative; height: 100%; ">
+                <app-slideshow params="slides: $blade.slides"></app-slideshow>
+            </div>
+        </div>
+    </div>
+</div>

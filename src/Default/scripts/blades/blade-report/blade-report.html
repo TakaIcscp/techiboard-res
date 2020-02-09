@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="icons-group">
+        <div class="vg-logo g-icon-bubble">
+            <img data-bind="attr: { 'src': $blade.getTechLogo() }">
+        </div>
+    </div>
+
+    <div class="legend-text">
+        If you have anything to report to Techtorium staff, feel free to use this to send us a message.
+    </div>
+
+    <div class="row">
+        <!-- ko if: $blade.Image() == null -->
+        <div class="but but-inline" style="margin: auto;" data-bind="click: $blade.imageUpload.bind($blade)">Add Image</div>
+        <!-- /ko -->
+
+        <!-- ko if: $blade.Image() != null -->
+        <div class="but but-inline" style="margin: auto;" data-bind="click: $blade.removeImage.bind($blade)">Remove Image</div>
+        <!-- /ko -->
+    </div>
+        
+    <div class="title"></div>
+    <textarea placeholder="Hello, this level 4 power outlet..." type="text" data-bind="value: $blade.Text"></textarea>
+    <button class="send-button" data-bind="click: $blade.send.bind($blade)">Send Message</button>
+</div>

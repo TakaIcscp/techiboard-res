@@ -1,0 +1,20 @@
+<div class="toolbar">
+    <div class="-ns-fit"></div>
+    <div class="button-group">
+       <!-- ko if: $blade.isAdmin() || $blade.isTeacher() -->
+       <button data-bind="click: $blade.newAssessment.bind($blade)"><i class="fa fa-plus"></i> New</button>
+       <!-- /ko -->
+    </div>
+</div>
+
+<div class="content">
+    <!-- ko if: $blade.loading() -->
+    <app-spinner class="-ns-fill-all"></app-spinner>
+    <!-- /ko -->
+
+    <!-- ko if: !$blade.loading() -->
+    <app-complex-search
+        params="textVariableId: 'Tag', idVariableId: 'ID', selected: $blade.selectedAssessment, items: $blade.data">
+    </app-complex-search>
+    <!-- /ko -->
+</div>

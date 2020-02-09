@@ -1,0 +1,69 @@
+<!-- ko if: $blade.canEdit() -->
+<div class="toolbar">
+    <div class="-ns-fit"></div>
+    <div class="button-group">
+        <button data-bind="click: $blade.save.bind($blade)"><i class="fa fa-plus"></i> Save</button>
+        <!-- ko if: $blade.ID() != null -->
+        <button data-bind="click: $blade.remove.bind($blade)"><i class="fa fa-trash"></i> Delete</button>
+        <!-- /ko -->
+    </div>
+</div>
+<!-- /ko -->
+
+<div class="preview-container">
+    <app-slideshow params="slides: $blade.previewSlide, paused: true, preview: true"></app-slideshow>
+
+    <!-- ko if: $blade.canEdit() -->
+    <a title="Edit Background" class="editor-option" style="position: absolute; left: 15px; top: 15px;" data-bind="click: $blade.changeState.bind($blade, 'a'), css: { 'selected': $blade.state() == 'a' }"><i class="fas fa-edit"></i></a>
+    <a title="Edit SubText" class="editor-option" style="position: absolute; right: 15px; top: 40%; transform: translateY(-40%);" data-bind="click: $blade.changeState.bind($blade, 'b'), css: { 'selected': $blade.state() == 'b' }"><i class="fas fa-edit"></i></a>
+    <a title="Edit Text" class="editor-option" style="position: absolute; right: 15px; top: 60%; transform: translateY(-60%);" data-bind="click: $blade.changeState.bind($blade, 'c'), css: { 'selected': $blade.state() == 'c' }"><i class="fas fa-edit"></i></a>
+
+    <div class="presets-container">
+        <a data-bind="click: $blade.changePreset.bind($blade, '1')"><i class="fas fa-adjust"></i></a>
+        <a data-bind="click: $blade.changePreset.bind($blade, '2')"><i class="fas fa-adjust"></i></a>
+        <a data-bind="click: $blade.changePreset.bind($blade, '3')"><i class="fas fa-adjust"></i></a>
+        <a data-bind="click: $blade.revert.bind($blade)"><i class="fas fa-undo-alt"></i></a>
+    </div>
+    <!-- /ko -->
+</div>
+
+<!-- ko if: $blade.canEdit() -->
+<div class="editor-bubble">
+    <!-- ko if:  $blade.state() == 'a' -->
+    <div class="editor-bubble-section">
+        <div class="editor-title">Background Color</div>
+        <app-color-picker params="value: $blade.BackgroundColor"></app-color-picker>
+    </div>
+
+    <div class="editor-bubble-section">
+        <div class="editor-title">Background Image</div>
+
+        <div class="but but-inline" style="margin: auto;" data-bind="click: $blade.imageUpload.bind($blade)">Upload Image</div>
+    </div>
+    <!-- /ko -->
+
+    <!-- ko if:  $blade.state() == 'b' -->
+    <div class="editor-bubble-section">
+        <div class="editor-title">Text</div>
+        <textarea type="text" data-bind="textInput: $blade.Text">
+    </div>
+
+    <div class="editor-bubble-section">
+        <div class="editor-title">Text Color</div>
+        <app-color-picker params="value: $blade.TextColor"></app-color-picker>
+    </div>
+    <!-- /ko -->
+
+    <!-- ko if:  $blade.state() == 'c' -->
+    <div class="editor-bubble-section">
+        <div class="editor-title">Subtext</div>
+        <textarea type="text" data-bind="textInput: $blade.SubText">
+    </div>
+
+    <div class="editor-bubble-section">
+        <div class="editor-title">Subtext Color</div>
+        <app-color-picker params="value: $blade.SubTextColor"></app-color-picker>
+    </div>
+    <!-- /ko -->
+</div>
+<!-- /ko -->

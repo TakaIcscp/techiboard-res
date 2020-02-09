@@ -1,0 +1,66 @@
+@import (reference) "/src/Default/styles/global-definitions.less";
+ 
+ .message
+ {
+    max-width: 600px;
+    min-width: 300px;
+    display: inline-block;
+    text-align: left;
+    padding: 0 5px 0 5px;
+    margin-top: @padding-normal/2;
+    border-radius: 4px;
+    opacity: 0;
+    top: -20px;
+    position: relative; 
+    transition: .4s all;
+    cursor: pointer;
+ }
+ 
+ .message[message-type="error"]
+ {
+    background: rgba(250, 50, 50, 0.8);
+    color: white;
+ }
+ 
+ .message[message-type="success"]
+ {
+    background: rgba(39, 212, 39, 0.8);
+    color: white;
+ }
+
+ .message-text
+ {
+    padding: @padding-normal/2 @padding-normal;
+ }
+ 
+ .message-visible
+ {
+    top: 0px;
+    opacity: 1;
+ }
+
+ .buttons
+ {
+     margin-top: 0.10em;
+     padding-bottom: 3px;
+     text-align: right;
+ }
+
+ .small-button
+ {
+     display: inline-block;
+     width: 1.25em;
+     font-size: 1.0em;
+     //background-color: rgba(255,255,255,0.5);
+     border-radius: 1em;
+     border-style: none;
+     cursor: pointer;
+     text-align: center;
+     padding: 0;
+     color: #000;
+ }
+
+ .small-button > i
+ {
+     margin: 2px;
+ }

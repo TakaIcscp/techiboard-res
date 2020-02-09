@@ -1,0 +1,61 @@
+<!-- ko if: $blade.isAdmin() -->
+<div class="toolbar">
+    <div class="-ns-fit"></div>
+    <div class="button-group">
+        <!-- ko if: !$blade.isEditing() -->
+        <button data-bind="click: $blade.toggleEdit.bind($blade)"><i class="fa fa-plus"></i> Edit</button>
+        <!-- /ko -->
+
+        <!-- ko if: $blade.isEditing() -->
+        <button data-bind="click: $blade.save.bind($blade)"><i class="fa fa-plus"></i> Save</button>
+        <!-- ko if: $blade.ID() != null -->
+        <button data-bind="click: $blade.remove.bind($blade)"><i class="fa fa-trash"></i> Delete</button>
+        <button data-bind="click: $blade.cancel.bind($blade)"><i class="fa fa-times"></i> Cancel</button>
+        <!-- /ko -->
+        <!-- /ko -->
+    </div>
+</div>
+<!-- /ko -->
+
+<div class="-ns-margin-big">
+    <!-- ko if: $blade.isEditing() -->
+    <div class="info-group">
+        <div class="title">Tag</div>
+        <input type="text" data-bind="textInput: $blade.tag">
+    </div>
+
+    <div class="info-group">
+        <div class="title">Description</div>
+        <textarea class="dotted-back-important" type="text" data-bind="textInput: $blade.description, attr: { 'disabled': !$blade.isEditing() }">
+    </div>
+    <!-- /ko -->
+
+    <!-- ko if: !$blade.isEditing() && $blade.description() != null && $blade.description() != '' -->
+    <div class="desc-box" data-bind="text: $blade.description()"></div>
+    <!-- /ko -->
+
+    <!-- ko if: !$blade.isPDF() -->
+    <div class="file-preview-container">    
+        <img data-bind="attr: { 'src': $blade.path() }">
+    </div>
+    <!-- /ko -->
+
+    <!-- ko if: $blade.isPDF() && $blade.file() == null && $blade.ID() != null -->
+    <div class="link">
+        <a rel="noopener noreferrer" target="_blank" data-bind="attr: { 'href': $blade.path() }">View Full</a>
+    </div>
+    <iframe frameborder="0" scrolling="no" class="iframe-container" data-bind="attr: { 'src': $blade.path() }" ></iframe>
+    <!-- /ko -->
+
+    <!-- ko if: !$blade.isPDF() && $blade.file() == null && $blade.ID() != null -->
+    <div class="link">
+        <a rel="noopener noreferrer" target="_blank" data-bind="attr: { 'href': $blade.path() }">View Full</a>
+    </div>
+    <!-- /ko -->
+
+    <!-- ko if: $blade.isEditing() -->
+    <div class="row">
+        <div class="but but-inline" style="margin: auto;" data-bind="click: $blade.fileUpload.bind($blade)">Upload File</div>
+    </div>
+    <!-- /ko -->
+</div>

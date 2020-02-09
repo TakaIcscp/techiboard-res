@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Config>
+    <Parameter name="IsDebug" value="true" />
+    <Parameter name="SubdomainOverride" value="test" />
+    <Parameter name="RootURL" value="http://localhost:8081/" />
+    <Parameter name="UIResource" value="C:/Programming/admin/dist" />
+    <Parameter name="ForceHttps" value="false" />
+    <Parameter name="BackendURL" value="@IDM/session" />
+    <Parameter name="SessionCookieName" value="SSID" />
+    <Parameter name="TempPath" value="C:/temp/grounds/" />
+    <Parameter name="AWSCredentials" value="Login=TBD;Password=TBD" />
+    <Parameter name="S3Credentials"  value="Login=TBD;Password=TBD" />
+    <Parameter name="S3Bucket" value="TBD" />
+    <Parameter name="S3UIPackage" value="" />
+</Config>

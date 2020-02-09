@@ -1,0 +1,84 @@
+@import (reference) "/src/Default/styles/global-definitions.less";
+
+:global(app-color-picker) {
+   position: relative;
+   display: inline-block;
+   min-width: 22px;
+   height: 22px;
+   border: 1px solid @color-gray-input-border;
+}
+
+.background {
+   position: absolute;
+   left: 2px;
+   top: 2px;
+   right: 2px;
+   bottom: 2px;
+
+   background-image: linear-gradient(-45deg, #cdcdcd 25%, transparent 25%), linear-gradient(45deg, #cdcdcd 25%, transparent 25%), linear-gradient(-45deg, transparent 75%, #cdcdcd 75%), linear-gradient(45deg, transparent 75%, #cdcdcd 75%);
+   background-size: 11px 11px;
+   background-position: 0 0, 0 -5.5px, -5.5px 5.5px, 5.5px 0px;
+}
+
+.color {
+   position: absolute;
+   left: 2px;
+   top: 2px;
+   right: 2px;
+   bottom: 2px;
+}
+
+:global(.a-color-picker) {
+   box-shadow: none !important;
+}
+
+.buttons {
+   font-size: @font-size-normal;
+   padding: 0px @padding-normal;
+   text-align: center;
+}
+
+app-dropdown {
+   position: absolute;
+   left: 0px;
+   top: 0px;
+   right: 0px;
+   bottom: 0px;
+
+   margin-left: -24px;
+}
+
+app-dropdown :global(.dropdown),
+app-dropdown :global(.dropdown) > :global(.-ns-link) {
+   position: absolute;
+   left: 0px;
+   top: 0px;
+   right: 0px;
+   bottom: 0px;
+   height: auto;
+}
+
+app-dropdown :global(.fas) {
+   visibility: hidden;
+}
+
+app-dropdown :global(.popup-block) {
+   margin-top: 5px;
+}
+
+app-dropdown :global(.popup-block.popup-bottom-arrow) {
+   margin-top: -10px;
+}
+
+.control {
+   position: relative;
+
+   :global(.a-color-picker-rgb) > :global(input) {
+      font-size: 11px;
+   }
+
+   :global(.a-color-picker-rgb) {
+      padding-left: 0px;
+      padding-right: 0px;
+   }
+}

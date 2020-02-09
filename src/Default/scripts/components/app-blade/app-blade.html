@@ -1,0 +1,76 @@
+<!-- ko if: $component.blade -->
+<div class="blade" data-bind="attr: {
+                                 'blade-size': $component.blade.size(),
+                                 'is-maximized': $component.blade.isMaximized(),
+                                 'is-minimized': $component.blade.isMinimized(),
+                                 'is-animated': $component.blade.isAnimated(),
+                                 'is-showing': $component.blade.isShowing(),
+                                 'is-last': $component.isLast() ? 'true' : 'false',
+                                 'index': $component.index(),
+                              },
+                              'rendered-attr': {onrender: $component.blade.rendered.bind($component.blade)},
+                              css: {
+                                 'blade-initial': $component.bladeInitialAnimation()
+                              },
+                              click: $component.blade.isMinimized() && !$component.blade.isAnimated() ? $component.bladeClicked.bind($component) : null,
+                              style : {
+                                 zIndex: $component.blade.zIndex() ? $component.blade.zIndex() : null
+                              }">
+   <!-- ko if: !$component.blade.isMinimized() -->
+   <div class="blade-title">
+      <!-- ko if: $component.index() > 0 && $component.blade.title() -->
+      <span class="back-button" title="Close" data-bind="click: $component.back.bind($component)"><i class="far fa-arrow-alt-circle-left"></i></span>
+      <!-- /ko -->
+      <div data-bind="text: $component.blade.title()"></div>
+   </div>
+   <!-- /ko -->
+   <div class="blade-buttons">
+   <!-- ko if: !$component.blade.isMinimized() -->
+      <!-- ko if: $component.blade.canMaximize() -->
+         <div class="blade-button" data-bind="click: $component.minimize.bind($component)" title="Minimize">
+            <i class="far fa-window-minimize"></i>
+         </div>
+
+         <div class="blade-button" data-bind="click: $component.maximize.bind($component),
+                        attr: {'title': $component.blade.isMaximized() ? 'Normal Size' : 'Maximize' }">
+            <!-- ko if: !$component.blade.isMaximized() -->
+            <i class="fas fa-arrow-right"></i>
+            <!-- /ko -->
+
+            <!-- ko if: $component.blade.isMaximized() -->
+            <i class="fas fa-arrow-left"></i>
+            <!-- /ko -->
+         </div>
+      <!-- /ko -->
+
+      <!-- ko if: $component.index() > 0 -->
+      <div class="blade-button blade-button-red" data-bind="click: $component.back.bind($component)" title="Close">
+         <i class="fas fa-times"></i>
+      </div>
+      <!-- /ko -->
+
+   <!-- /ko -->
+   </div>
+
+   <!-- ko if: $component.blade.isMinimized() && !$component.blade.isAnimated() -->
+   <div class="blade-title-minimized">
+      <h1 data-bind="text: $component.blade.title()"></h1>
+   </div>
+   <!-- /ko -->
+
+   <!-- ko let: {'$blade': $component.blade} -->
+   <div class="blade-content" data-bind="template: {nodes: $component.getTemplate.bind($component)(), data: $component.blade},
+         attr: {
+            'blade-size': $component.blade.size(),
+            'is-maximized': $component.blade.isMaximized(),
+            'is-minimized': $component.blade.isMinimized(),
+            'is-animated': $component.blade.isAnimated()
+         }">
+   </div>
+   <!-- /ko -->
+
+   <!-- ko if: $component.blade.isLoadingState() && !$component.blade.isMinimized() -->
+   <app-spinner></app-spinner>
+   <!-- /ko -->
+</div>
+<!-- /ko -->

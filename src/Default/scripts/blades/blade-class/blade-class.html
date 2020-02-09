@@ -1,0 +1,88 @@
+<!-- ko if: $blade.isLoading() -->
+<app-spinner class="-ns-fill-all"></app-spinner>
+<!-- /ko -->
+
+<!-- ko if: !$blade.isLoading() -->
+<div class="toolbar">
+    <div class="-ns-fit"></div>
+    <div class="button-group">
+        <!-- ko if: !$blade.isEditing() -->
+        <button data-bind="click: $blade.toggleEdit.bind($blade)"><i class="fa fa-plus"></i> Edit</button>
+        <!-- /ko -->
+
+        <!-- ko if: $blade.isEditing() -->
+        <button data-bind="click: $blade.save.bind($blade)"><i class="fa fa-plus"></i> Save</button>
+        <!-- ko if: $blade.ID() != null -->
+        <button data-bind="click: $blade.remove.bind($blade)"><i class="fa fa-trash"></i> Delete</button>
+        <button data-bind="click: $blade.cancel.bind($blade)"><i class="fa fa-times"></i> Cancel</button>
+        <!-- /ko -->
+        <!-- /ko -->
+    </div>
+</div>
+
+<div class="-ns-margin-big">
+    <div class="sidebar-group">
+        <div class="lead-teacher-box" title="Class Lead">
+            <span><i class="fas fa-crown"></i></span>
+            <span data-bind="text: $blade.LeadTeacherString() ? $blade.LeadTeacherString() : 'None'"></span>
+        </div>
+
+        <div class="active-checkbox" data-bind="css: { 'active': $blade.Active(), 'inactive': !$blade.Active() }" title="Class State">
+            <span>Active</span>
+            <app-checkbox params="checked: $blade.Active, enable: $blade.isEditing"></app-checkbox>
+        </div>
+
+        <div class="graduated-checkbox" data-bind="css: { 'active': $blade.Graduated(), 'inactive': !$blade.Graduated() }" title="Class Graduated">
+            <span>Graduated</span>
+            <app-checkbox params="checked: $blade.Graduated, enable: $blade.isEditing"></app-checkbox>
+        </div>
+    </div>
+
+    <div class="row">
+        <label>Class Tag</label>
+        <input type="text" data-bind="value: $blade.Tag, attr: { 'disabled': !$blade.isEditing() }"></input>
+    </div>
+</div>
+
+<div class="-ns-margin-big" style="margin-top: 45px; margin-bottom: 5px;">
+    <div>Diploma</div>
+    <div class="row filtered-search-group" style="height: 150px;">
+        <app-complex-search style="width: 100%;"
+            params="textVariableId: 'name', idVariableId: 'id', selected: $blade.SelectedDiploma, items: $blade.Diplomas, fullBorder: true, disabled: !$blade.isEditing()">
+        </app-complex-search>
+    </div>
+</div>
+
+<div class="-ns-margin-big">
+    <div class="row filtered-search-group">
+        <div class="search-grouping">
+            <app-complex-search
+                params="disabledClickEvent: $blade.selectByPerson.bind($blade), title: 'Teachers', textVariableId: 'name', idVariableId: 'id', selected: $blade.selectedTeacher, items: $blade.Teachers, controls: $blade.teacherListControls(), fullBorder: true, disabled: !$blade.isEditing()">
+            </app-complex-search>
+    
+            <app-complex-search
+                params="disabledClickEvent: $blade.selectByPerson.bind($blade), title: 'Add Teachers', textVariableId: 'name', idVariableId: 'id', selected: $blade.selectedTeacher, items: $blade.teacherList, controls: $blade.teacherControls(), fullBorder: true, disabled: !$blade.isEditing()">
+            </app-complex-search>
+        </div>
+
+        <div class="search-grouping">
+            <app-complex-search
+                params="disabledClickEvent: $blade.selectByPerson.bind($blade), title: 'Students', textVariableId: 'name', idVariableId: 'id', selected: $blade.selectedStudent, items: $blade.Students, controls: $blade.studentListControls(), fullBorder: true, disabled: !$blade.isEditing()">
+            </app-complex-search>
+    
+            <app-complex-search
+                params="disabledClickEvent: $blade.selectByPerson.bind($blade), title: 'Add Students', textVariableId: 'name', idVariableId: 'id', selected: $blade.selectedStudent, items: $blade.studentList, controls: $blade.studentControls(), fullBorder: true, disabled: !$blade.isEditing()">
+            </app-complex-search>
+        </div>
+    </div>
+</div>
+
+<!-- ko if: $blade.ID() != null && !$blade.isEditing() -->
+<h2 style="margin-bottom: 5px;">Class Information</h2>
+<ul class="information-block">
+   <!--<li><div class="but" data-bind="click: $blade.viewAttendace.bind($blade)"><i class="far fa-newspaper"></i> <strike>Attendance</strike></div></li>-->
+   <li><div class="but" data-bind="click: $blade.viewAssessments.bind($blade)"><i class="fas fa-pencil-alt"></i> Assessments</div></li>
+   <!--<li><div class="but"><i class="far fa-clock"></i> <strike>Timetable</strike></div></li>-->
+</ul>
+<!-- /ko -->
+<!-- /ko -->

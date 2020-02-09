@@ -1,0 +1,48 @@
+<div class="-ns-margin-big">
+    <div class="sidebar-group">
+        <div class="lead-teacher-box">
+            <span><i class="fas fa-crown"></i></span>
+            <span data-bind="text: $blade.LeadTeacherString() ? $blade.LeadTeacherString() : 'None'"></span>
+        </div>
+
+        <div class="active-checkbox" data-bind="css: { 'active': $blade.Graduated(), 'inactive': !$blade.Graduated() }">
+            <span>Graduated</span>
+        </div>
+
+        <div class="active-checkbox" data-bind="css: { 'active': $blade.Active(), 'inactive': !$blade.Active() }">
+            <span>Active</span>
+        </div>
+    </div>
+</div>
+
+<div class="-ns-margin-big">
+    <div style="padding-left: 5px;" data-bind="text: $blade.diplomaRecord() != null ? $blade.diplomaRecord()['Title'] : null"></div>
+</div>
+
+<div class="-ns-margin-big">
+    <div class="row filtered-search-group">
+        <div class="search-grouping dotted-back">
+            <app-complex-search
+                params="title: 'Teachers', textVariableId: 'name', idVariableId: 'id', selected: $blade.selectedTeacher, items: $blade.Teachers, fullBorder: true">
+            </app-complex-search>
+        </div>
+
+        <div class="search-grouping dotted-back">
+            <app-complex-search
+                params="title: 'Students', textVariableId: 'name', idVariableId: 'id', items: $blade.Students, fullBorder: true">
+            </app-complex-search>
+        </div>
+    </div>
+</div>
+
+<h2 style="margin-bottom: 5px;">Information</h2>
+<ul class="information-block">
+   <!--<li><div class="but"><i class="far fa-newspaper"></i> <strike>Your Attendance</strike></div></li>-->
+   <li><div class="but" data-bind="click: $blade.viewAssessments.bind($blade)"><i class="fas fa-pencil-alt"></i> Your Grades</div></li>
+   <!-- ko if: $blade.DiplomaID() != null && $blade.DiplomaID() != 0 -->
+   <li><div class="but" data-bind="click: $blade.openDiploma.bind($blade)"><i class="fas fa-graduation-cap"></i> Diploma</div></li>
+   <!-- /ko -->
+   <!-- ko if: $blade.DiplomaID() == null || $blade.DiplomaID() == 0 -->
+   <li><div class="but"><i class="fas fa-graduation-cap"></i> <strike>Diploma</strike></div></li>
+   <!-- /ko -->
+</ul>

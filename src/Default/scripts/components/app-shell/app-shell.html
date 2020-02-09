@@ -1,0 +1,111 @@
+<!-- ko if: isLoggedIn() && !isChangingUser() -->
+<app-toolbar></app-toolbar>
+<!-- /ko -->
+
+<!-- Need authorization -->
+<!-- ko if: !isLoggedIn() || isChangingUser() -->
+
+<div class="background">
+   <div class="background-image"></div>
+</div>
+
+<app-login></app-login>
+<!-- /ko -->
+
+<div class="shell">
+   <!-- ko if: isLoggedIn() && !isChangingUser() -->
+   <!-- left menu -->
+   <div class="shell-left" data-bind="css: { 'shell-left-closed': !$component.sidebarOpen(), 'mobile-version': $component.isMobile() }">
+      <!-- ko foreach: $component.menuGroups() -->
+
+      <!-- ko if: $component.isGroupEnabled($data)-->
+      <!-- ko if: $data.position != 'BOTTOM' -->
+      <div class="menu-group n-h">
+         <!-- ko if: $data.notGroup != true -->
+         <a class="menu-item group-toggle" data-bind="click: $component.toggleMenuGroup.bind($component, $data), style: { 'background-color': $data.open ? '#d9f0ff' : 'white' }">
+            <i class="menu-item-icon" data-bind="css: $data.open ? 'fas fa-chevron-up' : 'fas fa-chevron-down'"></i>
+            <div class="menu-item-text" data-bind="text: $data.title"></div>
+         </a>
+         <!-- /ko -->
+
+         <!-- ko if: $data.open || $data.notGroup == true -->
+         <!-- ko foreach: $data.items -->
+            <!-- ko if: $data.title && $component.isItemEnabled($data) -->
+            <!-- ko if: ($component.isMobile() && $data.isMobile != true) || !$component.isMobile() -->
+            <a class="menu-item" data-bind="click: $component.selectMenu.bind($component, $data),
+            attr: {
+               'selected': $data === $component.selectedMenu(),
+               'is-disable': $data.disable,
+               'href': $component.getMenuURL($data)
+            }">
+            <i class="menu-item-icon" data-bind="css: $data.icon"></i>
+            <div class="menu-item-text" data-bind="text: $data.title"></div>
+            </a>
+            <!-- /ko-->
+            <!-- /ko -->
+         <!-- /ko -->
+         <!-- /ko -->
+      </div>
+      <!-- /ko -->
+      <!-- /ko -->
+
+      <!-- /ko -->
+
+      <div class="menu-groups-bottom">
+      <!-- ko foreach: $component.menuGroups() -->
+         <!-- ko if: $component.isGroupEnabled($data)-->
+         <!-- ko if: $data.position == 'BOTTOM' -->
+               <div class="menu-group n-h">     
+                  <!-- ko if: $data.open || $data.notGroup == true -->
+                  <!-- ko foreach: $data.items -->
+                     <!-- ko if: $data.title && $component.isItemEnabled($data) -->
+                     <!-- ko if: ($component.isMobile() && $data.isMobile != true) || !$component.isMobile() -->
+                     <a class="menu-item" data-bind="click: $component.selectMenu.bind($component, $data),
+                     attr: {
+                        'selected': $data === $component.selectedMenu(),
+                        'is-disable': $data.disable,
+                        'href': $component.getMenuURL($data)
+                     }">
+                     <i class="menu-item-icon" data-bind="css: $data.icon"></i>
+                     <div class="menu-item-text" data-bind="text: $data.title"></div>
+                     </a>
+                     <!-- /ko-->
+                     <!-- /ko -->
+                  <!-- /ko -->
+                  <!-- /ko -->
+         
+                  <!-- ko if: $data.notGroup != true -->
+                  <a class="menu-item group-toggle" data-bind="click: $component.toggleMenuGroup.bind($component, $data), style: { 'background-color': $data.open ? '#d9f0ff' : 'white' }">
+                     <i class="menu-item-icon" data-bind="css: $data.open ? 'fas fa-chevron-down' : 'fas fa-chevron-up' "></i>
+                     <div class="menu-item-text" data-bind="text: $data.title"></div>
+                  </a>
+                  <!-- /ko -->
+               </div>
+         <!-- /ko -->
+         <!-- /ko -->
+      <!-- /ko -->
+      </div>
+   </div>
+
+   <div class="shell-left-toggle" data-bind="click: $component.toggleSidebar.bind($component)">
+      <!-- ko if: $component.sidebarOpen() -->
+      <i class="fas fa-caret-left"></i>
+      <!-- /ko -->
+
+      <!-- ko if: !$component.sidebarOpen() -->
+      <i class="fas fa-caret-right"></i>
+      <!-- /ko -->
+   </div>
+
+   <!-- data -->
+   <div class="shell-container">
+      <!-- ko if: $component.selectedMenu() && $component.selectedMenu().blade -->
+      <!-- ko with: $component.selectedMenu() -->
+      <app-menu params="initialBlade: $data.blade, urlState: $component.urlState"></app-menu>
+      <!-- /ko -->
+      <!-- /ko -->
+   </div>
+   <!-- /ko -->
+</div>
+
+<app-messages></app-messages>

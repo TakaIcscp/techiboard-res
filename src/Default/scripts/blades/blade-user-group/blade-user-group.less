@@ -1,0 +1,73 @@
+@import (reference) "/src/Default/styles/global-definitions.less";
+
+.toolbar {
+   display: flex;
+   align-items: center;
+   position: relative;
+   flex-grow: 0;
+   flex-shrink: 0;
+   margin-bottom: @padding-normal;
+   white-space: nowrap;
+}
+
+.button-group {
+}
+
+.button-group > button {
+   width: 100px;
+   min-width: 100px;
+   font-size: 12px;
+   white-space: nowrap;
+}
+
+.row {
+   margin: 1px 0px;
+   display: flex;
+}
+
+label {
+   flex-grow: 0;
+   flex-shrink: 0;
+   width: 90px;
+}
+
+input, textarea {
+   flex-grow: 1;
+}
+
+textarea {
+   height: 80px;
+}
+
+h2 {
+   margin-bottom: @padding-normal;
+}
+
+.check-row {
+   margin: 2px 0px;
+}
+
+.check-row-input {
+   border-color: transparent;
+}
+
+.check-row-input:hover, .check-row-input:focus {
+   border-color: @color-gray-input-border;
+}
+
+app-checkbox {
+   margin-right: @padding-normal;
+   height: 15px;
+}
+
+.add-link {
+   margin-top: @padding-normal;
+}
+
+.remove-link {
+   visibility: hidden;
+}
+
+.check-row:hover > .remove-link {
+   visibility: visible;
+}

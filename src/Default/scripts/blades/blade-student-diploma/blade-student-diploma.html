@@ -1,0 +1,41 @@
+<div class="-ns-margin-big">
+    <!-- ko if: $blade.NZQAApproved() != null -->
+    <div class="row-bubble" data-bind="style: { 'background-color': $blade.NZQAApproved() ? '#8eff7a' : '#ff837a' }">
+        <span class="bubble-title">NZQA Approved:</span>
+        <span class="bubble-content">
+            <!-- ko if: $blade.NZQAApproved() -->
+            <i class="fas fa-check"></i>
+            <!-- /ko -->
+
+            <!-- ko if: !$blade.NZQAApproved() -->
+            <i class="fas fa-times"></i>
+            <!-- /ko -->
+        </span>
+    </div>
+    <!-- /ko -->
+
+    <!-- ko if: $blade.Duration() != null -->
+    <div class="row-bubble" style="background-color: #7ac5ff;">
+        <span class="bubble-title">Duration:</span>
+        <span class="bubble-content" data-bind="text: $blade.Duration"></span>
+    </div>
+    <!-- /ko -->
+
+    <!-- ko if: $blade.Credits() -->
+    <div class="row-bubble" style="background-color: #fff87a;">
+        <span class="bubble-title">Credits:</span>
+        <span class="bubble-content" data-bind="text: $blade.Credits"></span>
+    </div>
+    <!-- /ko -->
+</div>
+
+<div class="-ns-margin-big" style="margin-top: 15px;">
+    <!-- ko if: $blade.ContentsList().length > 0 -->
+    <h2>Diploma Details</h2>
+    <!-- ko foreach: $blade.ContentsList() -->
+    <li data-bind="text: $data"></li>
+    <!-- /ko -->
+    <!-- /ko -->
+</div>
+
+<div class="diploma-note" data-bind="text: $blade.Legend()"></div>

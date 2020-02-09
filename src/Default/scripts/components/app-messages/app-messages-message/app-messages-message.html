@@ -1,0 +1,8 @@
+<div class="message n-h" data-bind="'rendered-attr': {showStyles: ['message-visible']}, attr: {'message-type': $component.message ? $component.message.type : ''},
+                                                click: $component.btCloseClick.bind($component)">
+    <div class="message-text" data-bind="text: $component.message ? $component.message.text : ''"></div>
+    <div class="buttons">
+        <!-- <div class="small-button"><i class="fa fa-minus"></i></div> -->
+        <div class="small-button"><i class="fa fa-times" data-bind="{click: $component.btCloseClick.bind($component)}"></i></div>
+    </div>
+</div>

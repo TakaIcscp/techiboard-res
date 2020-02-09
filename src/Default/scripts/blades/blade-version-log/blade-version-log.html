@@ -1,0 +1,63 @@
+<!-- ko if: $blade.canEdit()-->
+<div class="toolbar">
+    <div class="-ns-fit"></div>
+    <div class="button-group">
+        <!-- ko if: $blade.ID() == null -->
+        <button data-bind="click: $blade.save.bind($blade)"><i class="fa fa-plus"></i> Save</button>
+        <!-- /ko -->
+
+        <!-- ko if: $blade.ID() != null -->
+        <!-- ko if: !$blade.editing() -->
+        <button data-bind="click: $blade.toggleEdit.bind($blade)"><i class="fa fa-plus"></i> Edit</button>
+        <!-- /ko -->
+
+        <!-- ko if: $blade.editing() -->
+        <button data-bind="click: $blade.save.bind($blade)"><i class="fa fa-plus"></i> Save</button>
+        <button data-bind="click: $blade.toggleEdit.bind($blade)"><i class="fa fa-plus"></i> Cancel</button>
+        <!-- /ko -->
+        <!-- /ko -->
+    </div>
+</div>
+<!-- /ko -->
+
+<!-- ko if: $blade.editing() -->
+<div class="-ns-margin-big">
+    <div class="row">
+        <label>Version</label>
+        <input type="number" data-bind="value: $blade.Version"></input>
+    </div>
+    <div class="row">
+        <label>Tag</label>
+        <input type="text" data-bind="value: $blade.Tag"></input>
+    </div>
+</div>
+
+<div class="-ns-margin-big" style="margin-top: 15px;">
+    <h2>Version Details</h2>
+    <!-- ko if: $blade.ContentsList() && $blade.ContentsList().length -->
+    <!-- ko foreach: $blade.ContentsList() -->
+    <div class="check-row">
+        <i class="fas fa-info"></i> <input type="text" placeholder="Type detail here..." class="check-row-input" data-bind="value: $data.text">
+        <span class="-ns-link-danger remove-link" data-bind="click: $blade.removeContent.bind($blade, $data)"><i class="fa fa-trash"></i> Remove</span>
+    </div>
+    <!-- /ko -->
+    <!-- /ko -->
+
+    <div style="padding-top: 10px;">
+        <div class="but but-inline" data-bind="click: $blade.add.bind($blade)"><i class="fa fa-plus"></i> Add Detail</div>
+    </div>
+</div>
+<!-- /ko -->
+
+<!-- ko if: !$blade.editing() -->
+<div class="-ns-margin-big" style="margin-top: 15px;">
+    <!-- ko if: $blade.ContentsList().length > 0 -->
+    <h2>Version Details</h2>
+    <div class="version-container">
+        <!-- ko foreach: $blade.ContentsList() -->
+        <li data-bind="text: $data.text"></li>
+        <!-- /ko -->
+    </div>
+    <!-- /ko -->
+</div>
+<!-- /ko -->

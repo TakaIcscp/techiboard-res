@@ -1,0 +1,21 @@
+<!-- ko if: $blade.canEdit() -->
+<div class="toolbar">
+   <div class="-ns-fit"></div>
+   <div class="button-group">
+      <button data-bind="click: $blade.addNew.bind($blade)"><i class="fa fa-plus"></i> New</button>
+      <button data-bind="click: $blade.addMultiple.bind($blade)"><i class="fa fa-plus"></i> Create Multiple</button>
+   </div>
+</div>
+<!-- /ko -->
+
+<!-- ko if: !$blade.data() || !$blade.data().length -->
+<div>There are no users</div>
+<!-- /ko -->
+
+<div class="content">
+   <!--<app-filtered-search params="items: $blade.filteredData, selected: $blade.filteredSelected"></app-filtered-search>-->
+
+   <app-complex-search
+      params="postTitleTextId: 'postText', textVariableId: 'ID', idVariableId: 'ID', selected: $blade.selected, items: $blade.data, filters: $blade.filters, fullBorder: true">
+   </app-complex-search>
+</div>

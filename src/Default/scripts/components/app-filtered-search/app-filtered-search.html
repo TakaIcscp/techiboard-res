@@ -1,0 +1,30 @@
+<!-- ko if: $component.title() != null -->
+<div data-bind="text: $component.title()"></div>
+<!-- /ko -->
+
+<div class="container">
+    <input type="text" data-bind="textInput: $component.searched, attr: { 'id': $component.filterId2() }" placeholder="search...">
+    <!-- ko if: $component.filterId() != null -->
+    <div class="items" data-bind="attr: { 'id': $component.filterId()}">
+        <!-- ko foreach: $component.items() -->
+        <div class="item" data-bind="click: $component.itemClicked.bind($component, $data), 
+                                        css: { 'selected': $component.selected != null && $component.selected() != null ? $component.selected().id == $data.id : false },
+                                        attr: { 'title': $data.name != null ? $data.name : $data.id }">
+            <span data-bind="text: $data.name != null ? $data.name : $data.id"></span>
+            
+            <span class="item-controls">
+                <!-- ko foreach: $component.controls() -->
+                    <i class="control-item-icon tooltip" data-bind="css: $data.icon, style: { 'font-size': $data.size ? $data.size + 'px' : '14px' },
+                        click: $data.clickEvent ? $data.clickEvent.bind($blade, $parent.id) : null">
+                    
+                        <!-- ko if: $data.text != null -->
+                        <span class="tooltiptext" data-bind="text: $data.text"></span>
+                        <!-- /ko -->
+                    </i>
+                <!-- /ko -->
+            </span>
+        </div>
+        <!-- /ko -->
+    </div>
+    <!-- /ko -->
+</div>

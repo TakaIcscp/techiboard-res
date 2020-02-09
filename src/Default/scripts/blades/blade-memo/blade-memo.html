@@ -1,0 +1,46 @@
+<div class="content">
+    <!-- ko if: $blade.memo() != null -->
+    <div class="message-title" style="margin-top: -5px; margin-bottom: 10px;" data-bind="text: $blade.sendDateFormatted()"></div>
+
+    <div class="icon-container">
+        <i class="fas fa-dove g-icon-bubble"></i>
+    </div>
+
+    <!-- ko if: $blade.Image()-->
+    <div class="message-title">Attachment</div>
+    <div class="message-image" data-bind="style: { 'background-image': 'url(' + $blade.imagePath() + ')', 'background-size': 'contain' }"></div>
+
+    <div class="link" style="margin-bottom: 15px;">
+        <a rel="noopener noreferrer" target="_blank" data-bind="attr: { 'href': $blade.imagePath() }">View Full</a>
+    </div>
+    <!-- /ko -->
+
+    <div class="message-title">Message</div>
+    <textarea class="message-contents" disabled data-bind="value: $blade.memo()['Text']"></textarea>
+
+    <!-- ko if: $blade.canReply() == true -->
+    <span class="but but-inline" data-bind="click: $blade.reply.bind($blade)"><i class="fas fa-reply"></i> Reply</span>
+    <!-- /ko -->
+    <!-- /ko -->
+
+    
+    
+    
+
+    <!-- ko if: $blade.memo() == null -->
+    <div class="icon-container">
+        <i class="fas fa-dove g-icon-bubble"></i>
+    </div>
+
+    <div class="search-container">
+        <app-complex-search style="width: 100%;"
+            params="title: 'To User', textVariableId: 'name', idVariableId: 'id', selected: $blade.selectedUser, items: $blade.users, fullBorder: true, postTitleTextId: 'postText'">
+        </app-complex-search>
+    </div>
+
+    <div class="message-title">Message</div>
+    <textarea class="message-contents" data-bind="value: $blade.Text"></textarea>
+
+    <button class="send-button" data-bind="click: $blade.send.bind($blade)">Send Message</button>
+    <!-- /ko -->
+</div>

@@ -1,0 +1,344 @@
+@import (reference) "./global-definitions.less";
+
+* 
+{
+   box-sizing: border-box;
+}
+
+html, body 
+{
+   font-family: @font-family-base;
+   font-size: @font-size-normal;
+   width: 100%;
+   height: 100%;
+   margin: 0;
+   padding: 0;
+   
+   background: white;
+   background: url(../../../media/bg2.jpg);
+   //background: linear-gradient(136deg, rgba(98, 98, 98, 0.03) 0%, rgba(98, 98, 98, 0.03) 19%,rgba(240, 240, 240, 0.03) 19%, rgba(240, 240, 240, 0.03) 28%,rgba(23, 23, 23, 0.03) 28%, rgba(23, 23, 23, 0.03) 34%,rgba(60, 60, 60, 0.03) 34%, rgba(60, 60, 60, 0.03) 35%,rgba(148, 148, 148, 0.03) 35%, rgba(148, 148, 148, 0.03) 91%,rgba(83, 83, 83, 0.03) 91%, rgba(83, 83, 83, 0.03) 97%,rgba(251, 251, 251, 0.03) 97%, rgba(251, 251, 251, 0.03) 100%),linear-gradient(23deg, rgba(94, 94, 94, 0.03) 0%, rgba(94, 94, 94, 0.03) 16%,rgba(58, 58, 58, 0.03) 16%, rgba(58, 58, 58, 0.03) 43%,rgba(42, 42, 42, 0.03) 43%, rgba(42, 42, 42, 0.03) 62%,rgba(36, 36, 36, 0.03) 62%, rgba(36, 36, 36, 0.03) 73%,rgba(58, 58, 58, 0.03) 73%, rgba(58, 58, 58, 0.03) 78%,rgba(195, 195, 195, 0.03) 78%, rgba(195, 195, 195, 0.03) 84%,rgba(90, 90, 90, 0.03) 84%, rgba(90, 90, 90, 0.03) 100%),linear-gradient(90deg, rgb(61, 137, 214),rgb(8, 151, 216));
+   background-position: center;
+   background-size: cover;
+   background-repeat: no-repeat;
+   transform: scale(1);
+
+   color: @color-default-text;
+   overflow: hidden;
+}
+
+h1 
+{
+   margin-top: 0px;
+   margin-bottom: 0px;
+   font-family: @font-family-headers;
+   font-size: @font-size-large;
+   font-weight: bold;
+   white-space: nowrap;
+   overflow: hidden;
+   text-overflow: ellipsis;
+   flex-shrink: 0;
+   color: rgb(60,60,60);
+}
+
+h2 
+{
+   margin-top: 0px;
+   margin-bottom: 0px;
+   font-family: @font-family-headers;
+   font-size: @font-size-big;
+   text-transform: uppercase;
+   font-weight: bold;
+   white-space: nowrap;
+   overflow: hidden;
+   text-overflow: ellipsis;
+   flex-shrink: 0;
+}
+
+/* Buttons */
+button 
+{
+   border: 1px solid @color-gray-dark;
+   border-radius: 4px;
+   background: rgb(240,240,240);
+   padding: 4px 12px;
+   min-width: 120px;
+   cursor: pointer;
+   outline: none;
+}
+
+button:not([disabled]):hover 
+{
+   box-shadow: 0px 0px 1px 1px @color-blue;
+   z-index: 1;
+}
+
+button:active 
+{
+   box-shadow: 0px 0px 1px 1px @color-blue;
+}
+
+button[disabled] 
+{
+   cursor: default;
+}
+
+.button-group 
+{
+   display: flex;
+}
+
+/* Button group */
+.button-group > button
+ {
+   border-radius: 0px;
+   border-right: none;
+}
+
+.button-group > button:first-child 
+{
+   border-top-left-radius: 4px;
+   border-bottom-left-radius: 4px;
+}
+
+.button-group > button:last-child 
+{
+   border-top-right-radius: 4px;
+   border-bottom-right-radius: 4px;
+   border: 1px solid @color-gray-dark;
+}
+
+/* Inputs */
+select, input[type="checkbox"] 
+{
+   cursor: pointer;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="number"],
+select 
+{
+   border: 1px solid @color-gray-input-border;
+   height: 22px;
+   padding: 2px;
+   outline: none;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="number"] 
+{
+   padding-left: 6px;
+}
+
+textarea 
+{
+   border: 1px solid @color-gray-input-border;
+}
+
+
+input[type="text"]:disabled,
+input[type="password"]:disabled,
+input[type="number"]:disabled,
+textarea:disabled,
+select:disabled 
+{
+   background: @color-gray-normal;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="number"]:focus,
+select:focus 
+{
+   box-shadow: 0px 0px 1px 1px @color-blue;
+}
+
+input[type="text"],
+input[type="password"],
+select,
+textarea 
+{
+   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Layout */
+.-ns-fill-all 
+{
+   position: absolute;
+   left: 0px;
+   top: 0px;
+   right: 0px;
+   bottom: 0px;
+   display: block;
+}
+
+.-ns-margin-normal 
+{
+   margin-bottom: @padding-normal;
+}
+
+.-ns-margin-hor-normal
+{
+   margin-right: @padding-normal;
+}
+
+.-ns-margin-big 
+{
+   margin-bottom: @padding-big;
+}
+
+.-ns-margin-hor-big 
+{
+   margin-right: @padding-big;
+}
+
+.-ns-vertical 
+{
+   display: flex;
+   flex-direction: column;
+}
+
+.-ns-horizontal 
+{
+   display: flex;
+   flex-direction: row;
+}
+
+.-ns-fit 
+{
+   flex-grow: 1;
+}
+
+.-ns-static 
+{
+   flex-grow: 0;
+   flex-shrink: 0;
+}
+
+.-ns-align-center 
+{
+   text-align: center;
+}
+
+.-ns-align-right 
+{
+   text-align: right;
+}
+
+a, a:link, a:visited, .-ns-link, .-ns-link-danger 
+{
+   color: @color-blue-dark;
+   cursor: pointer; 
+   text-decoration: none;
+}
+
+.-ns-link-danger 
+{
+   color: red;
+}
+
+a:hover, .-ns-link:hover, .-ns-link-danger:hover 
+{
+   text-decoration: underline;
+}
+
+.-ns-loader 
+{
+   position: absolute;
+   left: 0px;
+   top: 0px;
+   height: 4px;
+   right: 0px;
+   overflow: hidden;
+   background-color: #ddd;
+}
+
+.-ns-loader:before
+{
+   display: block;
+   position: absolute;
+   content: "";
+   left: -200px;
+   width: 200px;
+   height: 4px;
+   background-color: #2980b9;
+   animation: -ns-loading-animation 2s linear .8s infinite;
+}
+
+.-ns-object 
+{
+   position: relative;
+   display: block;
+}
+
+@keyframes -ns-loading-animation
+{
+   from {left: -200px; width: 30%;}
+   50% {width: 30%;}
+   70% {width: 70%;}
+   80% {left: 50%;}
+   95% {left: 120%;}
+   to {left: 100%;}
+}
+
+/* Animation */
+.-ns-icon-animated 
+{
+   animation: -ns-icon-animated-frames .6s ease-in-out infinite;
+}
+
+@keyframes -ns-icon-animated-frames 
+{
+   from {transform: translateY(0);}
+   50% {transform: translateY(-32px);}
+   to {transform: translateY(0);}
+}
+
+.but
+{
+   color: #252729;
+   background-color: #f0f0f0;
+   padding: 4px 5px 4px 5px;
+   border: solid 1px #cdcdcd;
+   border-radius: 4px;
+   text-decoration: none;
+   cursor: pointer;
+   margin-bottom: 1px;
+}
+
+.but:not([disabled]):hover 
+{
+   background-color: #dadada;
+   transition: ease 0.2s;
+}
+
+.but-inline
+{
+   display: inline-block;
+}
+
+.n-h 
+{
+   -webkit-touch-callout: none; /* iOS Safari */
+     -webkit-user-select: none; /* Safari */
+      -khtml-user-select: none; /* Konqueror HTML */
+        -moz-user-select: none; /* Old versions of Firefox */
+         -ms-user-select: none; /* Internet Explorer/Edge */
+             user-select: none; /* Non-prefixed version, currently
+                                   supported by Chrome, Opera and Firefox */
+ }
+
+ .dotted-back
+ {
+   background-image: url('../media/dotted.png');
+   background-size: cover;
+   background-repeat: no-repeat;
+ }
+
+ .dotted-back-important
+ {
+   background-image: url('../media/dotted.png') !important;
+   background-size: cover !important;
+   background-repeat: no-repeat !important;
+ }

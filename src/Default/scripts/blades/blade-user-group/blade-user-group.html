@@ -1,0 +1,32 @@
+<div class="toolbar">
+   <div class="-ns-fit"></div>
+   <div class="button-group">
+      <button data-bind="click: $blade.save.bind($blade)"><i class="fa fa-plus"></i> Save</button>
+      <!--<button data-bind="click: $blade.remove.bind($blade), disable: $blade.isNew()"><i class="fa fa-trash"></i> Delete</button>-->
+   </div>
+</div>
+
+<div class="content">
+   <div class="-ns-margin-big">
+      <div class="row">
+         <label>Name</label>
+         <input type="text" data-bind="value: $blade.name, enable: $blade.isNew()"></input>
+      </div>
+   </div>
+
+   <div class="-ns-margin-big">
+      <h2>Permissions</h2>
+      <!-- ko if: $blade.permissions() && $blade.permissions().length -->
+      <!-- ko foreach: $blade.permissions() -->
+      <div class="check-row">
+         <i class="fas fa-address-card"></i> <input type="text" class="check-row-input" data-bind="value: $data.name">
+         <span class="-ns-link-danger remove-link" data-bind="click: $blade.removePermission.bind($blade, $data)"><i class="fa fa-trash"></i> Remove</span>
+      </div>
+      <!-- /ko -->
+      <!-- /ko -->
+
+      <div>
+         <div class="but" data-bind="click: $blade.add.bind($blade)"><i class="fa fa-plus"></i> Add Permission</div>
+      </div>
+   </div>
+</div>

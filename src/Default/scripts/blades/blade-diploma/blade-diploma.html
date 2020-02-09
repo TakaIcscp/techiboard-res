@@ -1,0 +1,65 @@
+<div class="toolbar">
+    <div class="-ns-fit"></div>
+    <div class="button-group">
+        <!-- ko if: !$blade.isEditing() -->
+        <button data-bind="click: $blade.toggleEdit.bind($blade)"><i class="fa fa-plus"></i> Edit</button>
+        <button title="View as member of public" data-bind="click: $blade.viewAsStudent.bind($blade)"><i class="far fa-eye"></i> Public View</button>
+        <!-- /ko -->
+
+        <!-- ko if: $blade.isEditing() -->
+        <button data-bind="click: $blade.save.bind($blade)"><i class="fa fa-plus"></i> Save</button>
+        <!-- ko if: $blade.ID() != null -->
+        <button data-bind="click: $blade.remove.bind($blade)"><i class="fa fa-trash"></i> Delete</button>
+        <button data-bind="click: $blade.cancel.bind($blade)"><i class="fa fa-times"></i> Cancel</button>
+        <!-- /ko -->
+        <!-- /ko -->
+    </div>
+</div>
+
+<div class="-ns-margin-big">
+    <div class="row">
+        <label>Level</label>
+        <input type="number" data-bind="value: $blade.Level, attr: { 'disabled': !$blade.isEditing() }"></input>
+    </div>
+    <div class="row">
+        <label>Title</label>
+        <input type="text" data-bind="value: $blade.Title, attr: { 'disabled': !$blade.isEditing() }"></input>
+    </div>
+    <div class="row">
+        <label>Duration</label>
+        <input type="number" data-bind="value: $blade.Duration, attr: { 'disabled': !$blade.isEditing() }"></input>
+    </div>
+    <div class="row">
+        <label>Credits</label>
+        <input type="number" data-bind="value: $blade.Credits, attr: { 'disabled': !$blade.isEditing() }"></input>
+    </div>
+    <div class="row">
+        <label>NZQA Approved</label>
+        <app-checkbox params="checked: $blade.NZQAApproved, enable: $blade.isEditing()"></app-checkbox>
+    </div>
+</div>
+
+<div class="-ns-margin-big" style="margin-top: 15px;">
+    <h2>Diploma Details</h2>
+    <!-- ko if: $blade.ContentsList() && $blade.ContentsList().length -->
+    <!-- ko foreach: $blade.ContentsList() -->
+    <div class="check-row">
+       <i class="fas fa-info"></i> <input type="text" placeholder="Type detail here..." class="check-row-input" data-bind="value: $data.text, attr: { 'disabled': !$blade.isEditing() }">
+       <!-- ko if: $blade.isEditing() -->
+       <span class="-ns-link-danger remove-link" data-bind="click: $blade.removeContent.bind($blade, $data)"><i class="fa fa-trash"></i> Remove</span>
+       <!-- /ko -->
+    </div>
+    <!-- /ko -->
+    <!-- /ko -->
+
+    <!-- ko if: $blade.isEditing() -->
+    <div style="padding-top: 10px;">
+       <div class="but but-inline" data-bind="click: $blade.add.bind($blade)"><i class="fa fa-plus"></i> Add Detail</div>
+    </div>
+    <!-- /ko -->
+
+    <div style="margin-top: 20px">Legend</div>
+    <div class="row">
+        <input type="text" data-bind="value: $blade.Legend, attr: { 'disabled': !$blade.isEditing() }"></input>
+    </div>
+ </div>

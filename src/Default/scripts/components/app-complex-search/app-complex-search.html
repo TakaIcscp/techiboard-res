@@ -1,0 +1,54 @@
+<!-- ko if: $component.title() != null -->
+<div class="container-title" data-bind="text: $component.title()"></div>
+<!-- /ko -->
+
+<div class="container n-h" data-bind="css: { 'full-border-container': $component.fullBorder(), 'filters-height': $component.filters().length > 0 && !$component.disabled() }">
+    <input type="text" data-bind="textInput: $component.searched" placeholder="search...">
+
+    <!-- ko if: $component.filters().length > 0 && !$component.disabled() -->
+    <div class="filters-containers">
+        <!-- ko foreach: $component.filters -->
+        <div class="filter">
+            <span data-bind="text: $data.title"></span>
+            <input type="checkbox" data-bind="attr: { 'checked': $data.checked }, click: $component.filterChange.bind($component, $data)">
+        </div>
+        <!-- /ko -->
+    </div>
+    <!-- /ko -->
+
+    <!-- ko if: $component.hoveredControlText() != null -->
+    <span class="tooltiptext" data-bind="text: $component.hoveredControlText()"></span>
+    <!-- /ko -->
+
+    <div class="items">
+        <!-- ko foreach: $component.items() -->
+        <!-- ko if: $data.isItemVisible == null || $data.isItemVisible -->
+        <div class="item" data-bind="click: $component.itemClicked.bind($component, $data), 
+                                        css: { 'selected': $component.selected != null && $component.selected() != null ? $component.selected()[$component.idId()] == $data[$component.idId()] : false },
+                                        attr: { 'title': $data[$component.textId()] }">            
+            <!-- ko if: $component.preTitleTextId() != '' -->
+            <span data-bind="text: $data[$component.preTitleTextId()]"></span>
+            <!-- /ko -->
+            <!-- ko if: $component.textId() != '' -->
+            <span data-bind="text: $data[$component.textId()]"></span>
+            <!-- /ko -->
+            <!-- ko if: $component.postTitleTextId() != '' -->
+            <span data-bind="text: $data[$component.postTitleTextId()]"></span>
+            <!-- /ko -->
+            
+            <!-- ko if: !$component.disabled() -->
+            <span class="item-controls">
+                <!-- ko foreach: $component.controls() -->
+                    <i class="control-item-icon tooltip" data-bind="css: $data.icon, style: { 'font-size': $data.size ? $data.size + 'px' : '14px' },
+                        click: $data.clickEvent ? $data.clickEvent.bind($component, $parent.id) : null,
+                        event: { 'mouseover': $component.setHoveredText.bind($component, $data),
+                                 'mouseout': $component.unsetHoveredText.bind($component) }">
+                    </i>
+                <!-- /ko -->
+            </span>
+            <!-- /ko -->
+        </div>
+        <!-- /ko -->
+        <!-- /ko -->
+    </div>
+</div>

@@ -1,0 +1,50 @@
+<div class="toolbar">
+    <div class="-ns-fit"></div>
+    <div class="button-group">
+        <button data-bind="click: $blade.save.bind($blade)"><i class="fa fa-plus"></i> Create Users</button>
+    </div>
+</div>
+
+
+<h2>Details</h2>
+<div class="-ns-margin-big">
+    <div class="row">
+        <label>Password</label>
+        <input type="text" data-bind="value: $blade.password"></input>
+    </div>
+
+    <div class="row">
+        <label>Activated</label>
+        <app-checkbox params="checked: $blade.activated"></app-checkbox>
+    </div>
+</div>
+
+<h2>Groups</h2>
+<div class="-ns-margin-big">
+   <!-- ko foreach: $blade.groups() -->
+   <div class="text-row">
+      <i class="fa fa-users"></i> <span data-bind="text: $data.Name"></span>
+      <span class="-ns-link-danger remove-link" data-bind="click: $blade.removeGroup.bind($blade, $data)"><i class="fa fa-trash"></i> Remove</span>
+   </div>
+   <!-- /ko -->
+
+   <div style="padding-top: 10px;">
+      <div class="but" data-bind="click: $blade.addGroup.bind($blade)"><i class="fa fa-plus"></i> Add To Group</div>
+   </div>
+</div>
+    
+<div class="-ns-margin-big" style="margin-top: 15px;">
+    <h2>Users</h2>
+    <!-- ko if: $blade.UsersList() && $blade.UsersList().length -->
+    <!-- ko foreach: $blade.UsersList() -->
+    <div class="check-row">
+        <i class="fas fa-info"></i> <input type="text" placeholder="Type ID here..." class="check-row-input" data-bind="value: $data.text">
+        <span class="-ns-link-danger remove-link" data-bind="click: $blade.removeContent.bind($blade, $data)"><i class="fa fa-trash"></i> Remove</span>
+    </div>
+    <!-- /ko -->
+    <!-- /ko -->
+
+    <div style="padding-top: 10px;">
+        <div class="but but-inline" data-bind="click: $blade.add.bind($blade)"><i class="fa fa-plus"></i> Add User</div>
+    </div>
+</div>

@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="icons-group">
+        <div class="vg-logo g-icon-bubble">
+            <img data-bind="attr: { 'src': $blade.getVGLogo() }">
+        </div>
+    
+        <!--
+        <div class="icon g-icon-bubble">
+            <i class="fas fa-feather"></i>
+        </div>
+        -->
+    </div>
+
+    <div class="legend-text">
+        If you have any questions, concerns or suggestions about Techboard feel free to send us a message using the entry below.
+    </div>
+
+    <div class="legend-subtext">
+        This is the website support blade, this will <strong>not</strong> message Techtorium but instead the developers maintaining this app.
+    </div>
+
+    <div class="row">
+        <!-- ko if: $blade.Image() == null -->
+        <div class="but but-inline" style="margin: auto;" data-bind="click: $blade.imageUpload.bind($blade)">Add Image</div>
+        <!-- /ko -->
+
+        <!-- ko if: $blade.Image() != null -->
+        <div class="but but-inline" style="margin: auto;" data-bind="click: $blade.removeImage.bind($blade)">Remove Image</div>
+        <!-- /ko -->
+    </div>
+    
+    <div class="title"></div>
+    <textarea placeholder="Hello, I found this bug..." type="text" data-bind="value: $blade.Text"></textarea>
+    <button class="send-button" data-bind="click: $blade.send.bind($blade)">Send Message</button>
+</div>

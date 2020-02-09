@@ -1,0 +1,42 @@
+@import (reference) "/src/Default/styles/global-definitions.less";
+
+.timetable-container
+{
+    position: relative;
+    width: 100%;
+    height: 602px;
+    background-color: rgb(202, 202, 202);
+    border: 1px black solid;
+    overflow: hidden;
+
+    .loading-container
+    {
+        z-index: 0;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        padding-top: 160px;
+
+        .loading
+        {
+            font-size: 120px;
+            text-align: center;
+            animation:spin 4s linear infinite;
+        }
+
+        .loading-text
+        {
+            padding-top: 20px;
+            font-size: 30px;
+            text-align: center;
+        }
+    }
+
+    iframe
+    {
+        position: absolute;
+        z-index: 1;
+    }
+}
+
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }

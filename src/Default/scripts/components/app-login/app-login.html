@@ -1,0 +1,36 @@
+<!--<div class="login-screen" data-bind="style: { 'background-image': $component.getBackground() }"></div>-->
+
+<div class="auth-dialog -ns-vertical">
+   <div class="-ns-fit">
+      <img class="login-logo" data-bind="attr: { 'src': $component.getLogo() }">
+
+      <div class="login-title">Techboard Login</div>
+      <div class="section">
+         <div class="section-sub">
+            <label><i class="fas fa-user"></i> Login</label>
+            <input type="text" maxlength="50" data-bind="value: login" />
+         </div>
+         <div class="section-sub">
+            <label><i class="fas fa-lock"></i> Password</label>
+            <input type="password" maxlength="50"  data-bind="value: password" />
+         </div>
+      </div>
+      <div class="section license">
+         <!--<input type="checkbox" maxlength="50"  data-bind="checked: agree" /><span>I accept <a href="Public~TermsAndConditions" target="new">Terms and Conditions</a></span>-->
+      </div>
+
+      <!-- ko if: error() -->
+      <div class="section error">
+         <div class="error-text" data-bind="text: error"></div>
+      </div>
+      <!-- /ko -->
+   </div>
+
+   <div class="-ns-static -ns-align-center">
+      <button data-bind="click: authUser.bind($component)">Login <i class="fa fa-chevron-right"></i></button>
+   </div>
+
+   <!-- ko if: $component.api.counter() > 0 -->
+   <app-spinner class="-ns-fill-all"></app-spinner>
+   <!-- /ko -->
+</div>

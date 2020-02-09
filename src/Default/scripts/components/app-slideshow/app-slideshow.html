@@ -1,0 +1,41 @@
+<div class="slideshow n-h" data-bind="style: { 'background-color': $component.currentSlide() != null ? $component.currentSlide()['backgroundColor'] : '#e0e0e0' }">
+    <!-- ko if: $component.currentSlide() != null -->
+    <!-- ko if: $component.currentSlide()['path'] != null -->
+    <div class="slide" data-bind="style: { 'background-image': 'url(' + $component.currentSlide()['path'] + ')', 'background-size': 'cover' }"></div>
+    <!-- /ko -->
+
+    <!-- ko if: $component.currentSlide()['text'] != null -->
+    <div class="slide-text-box">
+        <div class="slide-text-content" data-bind="style: { 'background-color': $component.currentSlide()['backgroundColor'] }, css: { 'content-shadow': $component.currentSlide()['path'] != null, 'preview': $component.preview() }">
+            <div class="slide-text" data-bind="text: $component.currentSlide()['text'], style: { 'color': $component.currentSlide()['textColor'] }"></div>
+            <div class="slide-subtext" data-bind="text: $component.currentSlide()['subtext'], style: { 'color': $component.currentSlide()['subtextColor'] }"></div>
+        </div>       
+    </div>
+    <!-- /ko -->
+    <!-- /ko -->
+</div>
+<!-- /ko -->
+
+<!-- ko if: !$component.preview() && !$component.isMobile() -->
+<div class="slide-controls">
+    <!-- ko if: $component.slides() != null && $component.slides().length > 0 -->
+    <!-- ko foreach: $component.slides -->
+    <div class="circle" data-bind="click: $component.changeIndex.bind($component, $data), css: { 'active': $data == $component.currentSlide() }"></div>
+    <!-- /ko -->
+    <!-- /ko -->
+
+    <!-- ko if: $component.slides().length > 0 -->
+    <div class="but tooltip" data-bind="click: $component.togglePause.bind($component)">
+        <!-- ko if: !$component.paused() -->
+        <i class="fas fa-pause"></i>
+        <!-- /ko -->
+
+        <!-- ko if: $component.paused() -->
+        <i class="fas fa-play"></i>
+        <!-- /ko -->
+
+        <span class="tooltiptext">Pause/Unpause</span>
+    </div>
+    <!-- /ko -->
+</div>
+<!-- /ko -->

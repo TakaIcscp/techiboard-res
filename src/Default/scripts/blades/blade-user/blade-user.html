@@ -1,0 +1,111 @@
+<!-- ko if: $blade.canEdit() -->
+<div class="toolbar">
+   <div class="-ns-fit"></div>
+   <div class="button-group">
+      <button data-bind="click: $blade.save.bind($blade), enable: $blade.canSave"><i class="fa fa-plus"></i> Save</button>
+      <!-- ko if: $blade.id() != null -->
+      <button data-bind="click: $blade.remove.bind($blade)"><i class="fa fa-trash"></i> Delete</button>
+      <!-- /ko -->
+   </div>
+</div>
+<!-- /ko -->
+
+<div class="halfs-container" data-bind="style: { 'display': $blade.minimal() ? 'block' : 'inline-flex' }">
+      <div class="half-in-half-bubble" data-bind="style: { 'width': $blade.minimal() ? '100%' : '50%', 'height': $blade.minimal() ? 'auto' : '100%' }">
+            <h2>Auth information</h2>
+            <div class="-ns-margin-big">
+               <div class="row">
+                  <label style="width: 110px;">Login</label>
+                  <input type="text" data-bind="value: $blade.id, enable: $blade.isNew() && $blade.canEdit()"></input>
+               </div>
+               <div class="row">
+                  <!-- ko if: $blade.isNew() -->
+                  <label style="width: 110px;">Set Pass</label>
+                  <!-- /ko -->
+
+                  <!-- ko if: !$blade.isNew() -->
+                  <label style="width: 110px;">Change Pass</label>
+                  <!-- /ko -->
+                  <input type="password" data-bind="value: $blade.password, enable: $blade.canEdit()"></input>
+               </div>
+            </div>
+         
+            <h2>Details</h2>
+            <div class="-ns-margin-big">
+               <div class="row">
+                  <label>Full Name</label>
+                  <input type="text" data-bind="value: $blade.name, enable: $blade.canEdit()"></input>
+               </div>
+               <div class="row">
+                  <label>Gender</label>
+                  <select data-bind="options: $blade.genders, enable: $blade.canEdit(), value: $blade.gender"></select>
+               </div>
+               <div class="row">
+                  <label>Student ID</label>
+                  <input type="text" data-bind="value: $blade.studentID, enable: $blade.canEdit()"></input>
+               </div>
+               <div class="row">
+                  <label>E-Mail</label>
+                  <input type="text" data-bind="value: $blade.email, enable: $blade.canEdit()"></input>
+               </div>
+               <div class="row">
+                  <label>Phone</label>
+                  <input type="text" data-bind="value: $blade.mobile, enable: $blade.canEdit()"></input>
+               </div>
+               <div class="row">
+                  <label>Activated</label>
+                  <app-checkbox params="checked: $blade.activated, enable: $blade.canEdit"></app-checkbox>
+               </div>
+               <!--<div class="row">
+                  <label>De-activated</label>
+                  <app-checkbox params="checked: $blade.disabled, enable: $blade.canEdit()"></app-checkbox>
+               </div>-->
+            </div>
+         
+            <!-- ko if: !$blade.isNew() -->
+            <h2>Groups</h2>
+            <div class="-ns-margin-big">
+               <!-- ko foreach: $blade.groups() -->
+               <div class="text-row">
+                  <i class="fa fa-users"></i> <span data-bind="text: $data.Name"></span>
+
+                  <!-- ko if: $blade.canEdit() -->
+                  <span class="-ns-link-danger remove-link" data-bind="click: $blade.removeGroup.bind($blade, $data)"><i class="fa fa-trash"></i> Remove</span>
+                  <!-- /ko -->
+               </div>
+               <!-- /ko -->
+         
+               <!-- ko if: $blade.canEdit() -->
+               <div>
+                  <div class="but" data-bind="click: $blade.addGroup.bind($blade)"><i class="fa fa-plus"></i> Add To Group</div>
+               </div>
+               <!-- /ko -->
+            </div>
+            <!-- /ko -->
+      </div>
+      
+      <div class="half-in-half-bubble" data-bind="style: { 'width': $blade.minimal() ? '100%' : '50%', 'height': $blade.minimal() ? 'auto' : '100%' }">
+            <div class="profile-image-container">
+               <!-- ko if: $blade.profileImage() == null -->
+               <i class="fas fa-user user-logo"></i>
+               <!-- /ko -->
+            
+               <!-- ko if: $blade.profileImage() != null -->
+               <img data-bind="attr: { src: $blade.profileImage }">
+               <!-- /ko -->
+            </div>
+
+            <h2>Profile Information</h2>
+            <div class="-ns-margin-big">
+               <div class="row">
+                  <label>Position</label>
+                  <input type="text" data-bind="value: $blade.position, enable: $blade.canEdit()"></input>
+               </div>
+               <br>
+               <div>About Me</div>
+               <div class="row">
+                  <textarea rows="4" cols="50" data-bind="value: $blade.about, enable: $blade.canEdit()"></textarea>
+               </div>
+            </div>
+      </div>
+</div>

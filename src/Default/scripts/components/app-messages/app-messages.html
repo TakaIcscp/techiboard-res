@@ -1,0 +1,12 @@
+<div class="messages">
+   <!-- ko foreach: $component.messages -->
+   <app-messages-message params="{message: $data, onClose: $component.itemCloseClicked.bind($component, $data)}"></app-messages-message>
+   <!-- /ko -->
+   <!--
+   <div class="message" data-bind="'rendered-attr': {showStyles: ['message-visible']},
+                                   click: $component.removeMessage.bind($component, $data),
+                                   attr: {'message-type': $data.type}">
+      <div class="message-text" data-bind="text: $data ? $data.text : ''"></div>
+   </div>
+   -->
+</div>

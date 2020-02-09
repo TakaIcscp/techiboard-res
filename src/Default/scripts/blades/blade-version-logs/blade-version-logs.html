@@ -1,0 +1,20 @@
+<div class="toolbar">
+    <div class="-ns-fit"></div>
+    <div class="button-group">
+        <!-- ko if: $blade.isAdmin() -->
+       <button data-bind="click: $blade.newLog.bind($blade)"><i class="fa fa-plus"></i> New</button>
+       <!-- /ko -->
+    </div>
+</div>
+
+<div class="content">
+    <!-- ko if: $blade.loading() -->
+    <app-spinner class="-ns-fill-all"></app-spinner>
+    <!-- /ko -->
+
+    <!-- ko if: !$blade.loading() -->
+    <app-complex-search
+        params="postTitleTextId: 'postTitle', textVariableId: 'Version', idVariableId: 'ID', selected: $blade.selectedLog, items: $blade.data">
+    </app-complex-search>
+    <!-- /ko -->
+</div>

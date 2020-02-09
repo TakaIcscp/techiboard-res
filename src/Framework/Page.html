@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Techboard</title>
+      
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+      <link rel="icon" href="${NaviconURL}" type="image/png" />
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/13.1.3/nouislider.min.css">
+      <link rel="stylesheet" href="${Root}/Default/styles/main.css">
+      <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Red+Hat+Display&display=swap" rel="stylesheet">
+      <script type="text/javascript" src="${Root}/Default/external/file-dialog/file-dialog.js"></script>
+      
+      <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/4.6.3/papaparse.min.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/13.1.3/nouislider.min.js"></script>
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/a-color-picker@1.1.7/dist/acolorpicker.min.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/5.5.0/math.min.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.3/ace.js"></script>
+
+      <script src="${Root}/Default/external/raphael-2.0.0/raphael.js"></script> <!-- contains adjusted code -->
+
+      <script type="text/javascript">
+         $$ = ${$$};
+
+         require.config({
+               urlArgs: "v"+$$.RVSuffix,
+               waitSeconds : 60,
+               baseUrl: "${Root}/Default",
+               paths: {
+                  text: "https://cdnjs.cloudflare.com/ajax/libs/require-text/2.0.12/text.min",
+                  css: "https://cdnjs.cloudflare.com/ajax/libs/require-css/0.1.10/css.min"
+               },
+               deps: [
+                  "./scripts/application"
+               ],
+               callback: (ApplicationModule) => {
+                  ko.applyBindings(new ApplicationModule.Application(), document.body);
+               }
+         });
+      </script>
+	</head>
+   <body>
+      <app-shell></app-shell>
+   </body>
+</html> 

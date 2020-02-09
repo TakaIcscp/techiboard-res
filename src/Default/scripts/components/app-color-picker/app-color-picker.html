@@ -1,0 +1,23 @@
+<div class="background"></div>
+<div class="color" data-bind="style: {backgroundColor: $component.value()}"></div>
+
+<!-- ko let: {'$parentComponent': $component} -->
+<app-dropdown params="title: '', 
+                     position: $component.DropDownPosition.Right,
+                     isOpened: $component.isOpened,
+                     canOpen: !$component.isReadonly(),
+                     fixed: true">
+   <div class="control" data-bind="'rendered-attr': {onrender: $parentComponent.onrender.bind($parentComponent)}" 
+      class="picker" 
+      acp-color="#EFE9E7" 
+      acp-show-rgb="yes"
+      acp-show-hsl="no"
+      acp-show-hex="no"
+      acp-show-alpha
+      acp-palette="PALETTE_MATERIAL_CHROME"
+      ></div>
+   <div class="buttons">
+      <span class="-ns-link" data-bind="click: $parentComponent.close.bind($parentComponent)">Close</span>
+   </div>
+</app-dropdown>
+<!-- /ko -->

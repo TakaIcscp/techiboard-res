@@ -1,0 +1,46 @@
+@import (reference) "/src/Default/styles/global-definitions.less";
+
+.content {
+   position: absolute;
+   left: 0px;
+   top: 00px;
+   right: 0px;
+   bottom: 0px;
+   overflow: auto;
+   display: flex;
+}
+
+app-blade {
+   display: block;
+   position: relative;
+   flex-grow: 0;
+   flex-shrink: 0;
+}
+
+app-blade[is-maximized="true"]:not([is-minimized=true]) {
+   flex-grow: 1;
+}
+
+app-blade[blade-size="tiny"]:not([is-minimized=true]) {
+   width: 300px;
+}
+
+app-blade[blade-size="small"]:not([is-minimized=true]) {
+   width: 400px;
+}
+
+app-blade[blade-size="medium"]:not([is-minimized=true]) {
+   width: 600px;
+}
+
+app-blade[blade-size="normal"]:not([is-minimized=true]) {
+   width: 800px;
+}
+
+app-blade[blade-size="big"]:not([is-minimized=true]) {
+   width: 900px;
+}
+
+app-blade[blade-size="massive"]:not([is-minimized=true]) {
+   width: 1200px;
+}

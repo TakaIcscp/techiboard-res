@@ -1,0 +1,21 @@
+{
+  "Proxies":
+  [
+    {
+        "Key": "IDM",
+        "URL": "TBD"
+    },
+    {
+        "Key": "CAM",
+        "URL": "TBD"
+    },
+    {
+        "Key": "Grounds",
+        "URL": "http://${subdomain}.api.grounds.host/"
+    },
+    {
+        "Key": "TBD",
+        "URL": "http://${subdomain}.api.grounds.host/"
+    }
+  ]
+}

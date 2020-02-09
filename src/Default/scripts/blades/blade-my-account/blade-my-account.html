@@ -1,0 +1,108 @@
+<div class="content">
+   <div class="row-bubble core-bubble">
+         <div class="user-logo-block">
+            <div title="Change Image" class="logo-container" data-bind="click: $blade.imageUpload.bind($blade)">
+               <!-- ko if: $blade.profileImage() == null -->
+               <i class="fas fa-user user-logo"></i>
+               <!-- /ko -->
+         
+               <!-- ko if: $blade.profileImage() != null -->
+               <img data-bind="attr: { src: $blade.profileImage }">
+               <!-- /ko -->
+            </div>
+
+            <!-- ko if: $blade.profileImage() == null -->
+            <div class="profile-image-arrow-container" data-bind="click: $blade.imageUpload.bind($blade)">
+               <div class="profile-image-arrow">
+                  <i class="fas fa-long-arrow-alt-up"></i>
+               </div>
+               <div class="text">Click to change!</div>
+            </div>
+            <!-- /ko -->
+
+            <!-- ko if: $blade.profileImage() != null -->
+            <div title="Remove Image" style="width: 30px; margin-top: 5px;" class="but but-inline" data-bind="click: $blade.removeProfileImage.bind($blade)"><i class="fas fa-times"></i></div>
+            <!-- /ko -->
+         </div>
+   
+         <div class="user-data">
+            <div class="info-tag-large" data-bind="text: $blade.getUserName()"></div>
+            <!-- ko if: $blade.isStudent() && $blade.studentID() != null -->
+            <div class="info-tag" data-bind="text: 'Student ID: ' + $blade.studentID()"></div>
+            <!-- /ko -->
+
+            <div class="edit-section">
+               <div class="info-tag">Name Tag</div>
+               <app-input params="allowOnlyNames: true, value: $blade.tag, disable: !$blade.isEditing()"></app-input>
+
+               <div style="margin-top: 5px;" class="info-tag">Password</div>
+               <app-input params="isPass: true, value: $blade.pass, disable: !$blade.isEditing()"></app-input>
+               <div style="margin-top: 5px;" class="info-tag">Confirm Password</div>
+               <app-input params="isPass: true, value: $blade.newPass, disable: !$blade.isEditing()"></app-input>
+
+               <!-- ko if: $blade.isEditing() -->
+               <span class="but but-inline" data-bind="click: $blade.toggleEditing.bind($blade)"><i class="fas fa-times"></i> Cancel</span>
+               <span class="but but-inline" data-bind="click: $blade.save.bind($blade)"><i class="fas fa-edit"></i> Save</span>
+               <!-- /ko -->
+
+               <!-- ko if: !$blade.isEditing() -->
+               <span class="but but-inline" data-bind="click: $blade.toggleEditing.bind($blade)"><i class="fas fa-edit"></i> Edit</span>
+               <!-- /ko -->
+            </div>
+         </div>
+   </div>
+
+   <div class="row-bubble double-bubble"data-bind="style: { 'width': $blade.isStudent() ? '78%' : '100%' }">
+      <div class="bubble-block">
+         <div class="info-title">Email:</div>
+         <app-input params="value: $blade.email, disable: true"></app-input>
+      </div>
+
+      <div class="bubble-block">
+            <div class="info-title">Mobile:</div>
+            <app-input params="value: $blade.mobile, disable: true"></app-input>
+      </div>
+
+      <div class="bubble-block">
+            <div class="info-title">Gender:</div>
+            <app-input params="value: $blade.gender, disable: true"></app-input>
+      </div>
+
+      <!-- ko if: !$blade.isStudent() -->
+      <div class="bubble-block">
+            <div class="info-title">About:</div>
+            <app-input params="value: $blade.about, disable: !$blade.isEditing2()"></app-input>
+      </div>
+
+      <div class="bubble-block">
+            <div class="info-title">Position:</div>
+            <app-input params="value: $blade.position, disable: !$blade.isEditing2()"></app-input>
+      </div>
+
+      <!-- ko if: $blade.isEditing2() -->
+      <span class="but but-inline" data-bind="click: $blade.toggleEditing2.bind($blade)"><i class="fas fa-times"></i> Cancel</span>
+      <span class="but but-inline" data-bind="click: $blade.saveTeacherInfo.bind($blade)"><i class="fas fa-edit"></i> Save</span>
+      <!-- /ko -->
+
+      <!-- ko if: !$blade.isEditing2() -->
+      <span class="but but-inline" data-bind="click: $blade.toggleEditing2.bind($blade)"><i class="fas fa-edit"></i> Edit</span>
+      <!-- /ko -->
+
+      <div class="but but-inline" data-bind="click: $blade.requestChange.bind($blade)" style="display: none; position: absolute; right: 20px;"><i class="fas fa-exclamation"></i> <strike>Request Change</strike></div>
+      <!-- /ko -->
+      
+      <!-- ko if: false && $blade.isStudent() -->
+      <div class="but but-inline" data-bind="click: $blade.requestChange.bind($blade)"><i class="fas fa-exclamation"></i> <strike>Request Change</strike></div>
+      <!-- /ko -->
+   </div>
+
+   <!-- ko if: false && $blade.isStudent() -->
+   <div class="row-bubble double-bubble" style="width: 19%; margin-left: 3%;">
+      <ul class="information-block">
+         <li><div class="but" data-bind="click: $blade.viewCV.bind($blade)"><i class="fas fa-file"></i> <strike>CV</strike></div></li>
+         <li><div class="but" data-bind="click: $blade.viewILP.bind($blade)"><i class="fas fa-shoe-prints"></i> <strike>ILP</strike></div></li>
+         <li><div class="but" data-bind="click: $blade.viewRAP.bind($blade)"><i class="fas fa-certificate"></i> <strike>RAP</strike></div></li>
+      </ul>
+   </div>
+   <!-- /ko -->
+</div>

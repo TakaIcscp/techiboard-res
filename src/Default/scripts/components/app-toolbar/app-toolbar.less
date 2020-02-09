@@ -1,0 +1,104 @@
+@import (reference) "/src/Default/styles/global-definitions.less";
+
+.container
+{
+    position: absolute;
+    display: flex;
+    width: 100%;
+    height: 80px;
+    background-color: rgba(1, 33, 70, 0.4);
+    box-shadow: inset 14px 0px 27px -20px rgba(0,0,0,0.38);
+    padding-top: 8px;
+}
+
+.toolbar-but
+{
+   margin-top: 12px;
+   color: black;
+   background-color: white;
+   padding: 3px 14px 3px 14px;
+   border-radius: 4px;
+   text-decoration: none;
+   cursor: pointer;
+   display: inline-block;
+   margin-left: 235px;
+   font-size: 16px;
+   line-height: 32px;
+   height: 40px;
+}
+
+.toolbar-but:not([disabled]):hover 
+{
+   background-color: #ff7b00;
+   color: white;
+   transition: ease 0.2s;
+}
+
+.shell-company 
+{
+   margin-left: 20px;
+   position: relative;
+   display: inline-flex;
+
+   height: 65px;
+   padding-left: 12px;
+   padding-top: 6px;
+   padding-right: 12px;
+   background-color: rgba(255, 255, 255, 0.9);
+   border-radius: 10px;
+
+   -webkit-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.75);
+   -moz-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.75);
+   box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.75);
+}
+
+.shell-logo 
+{
+   height: 50px;
+   left: 0px;
+   top: 3px;
+}
+
+.shell-company-name 
+{
+   font-size: 45px;
+   font-weight: normal;
+   color: #7bce2e;
+
+   img
+   {
+      margin-top: 5px;
+      height: 40px;
+   }
+}
+
+.shell-company-legend
+{
+   padding-top: 12px;
+   padding-left: 6px;
+   font-size: 30px;
+   color: #333333;
+   font-family: 'Ubuntu', sans-serif;
+}
+
+.logout-button
+{
+   cursor: pointer;
+   position: absolute;
+   right: 0;
+   border-radius: 6px;
+   padding: 10px 18px 10px 18px;
+   background-color: rgba(255, 255, 255, 0.8);
+   color: #161616;
+   transition: 0.3s ease;
+   margin-right: 20px;
+   margin-top: 11px;
+   font-size: 20px;
+
+   &:hover
+   {
+      background-color: #3f3f3f;
+      color: white;
+      transition: 0.3s ease;
+   }
+}

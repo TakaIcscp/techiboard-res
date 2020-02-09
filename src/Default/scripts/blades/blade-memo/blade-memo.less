@@ -1,0 +1,137 @@
+@import (reference) "/src/Default/styles/global-definitions.less";
+
+.row-container
+{
+   width: 80%;
+   margin: auto;
+   margin-top: 15px;
+}
+
+.row 
+{
+   margin: 1px 0px;
+   display: flex;
+}
+
+label 
+{
+   flex-grow: 0;
+   flex-shrink: 0;
+   width: 25px;
+   height: 22px;
+   line-height: 22px;
+}
+
+input, textarea, select 
+{
+   flex-grow: 1;
+}
+
+.content 
+{
+   position: relative;
+   text-align: center;
+}
+
+.message-text
+{
+   text-align: center;
+   font-size: 18px;
+   margin-bottom: 4px;
+}
+
+.message-title
+{
+   margin-top: 10px;
+   text-align: center;
+   margin-bottom: 2px;
+   font-size: 19px;
+}
+
+.message-contents
+{
+   width: 100%;
+   min-height: 100px;
+   resize: vertical;
+   padding: 10px;
+   font-size: 16px;
+   border-radius: 5px;
+}
+
+.icon-container
+{
+   width: 100%;
+   text-align: center;
+}
+
+.g-icon-bubble
+{
+   width: 70px;
+   height: 70px;
+   margin: auto;
+
+   background-color: rgb(29, 29, 29);
+   color: white;
+   border-radius: 50%;
+   overflow: hidden;
+
+   text-align: center;
+   font-size: 34px;
+   line-height: 70px;
+
+   -webkit-box-shadow: 0px 2px 15px -3px rgba(0,0,0,0.3);
+   -moz-box-shadow: 0px 2px 15px -3px rgba(0,0,0,0.3);
+   box-shadow: 0px 2px 15px -3px rgba(0,0,0,0.3);
+}
+
+.send-button
+{
+   width: 80px;
+   margin: auto;
+   display: block;
+   margin-top: 10px;
+}
+
+.search-container
+{
+   margin-top: 15px;
+   position: relative;
+   display: inline-flex;
+   width: 100%;
+   height: 180px;
+   text-align: center;
+}
+
+.message-image
+{
+   background-color: rgb(189, 189, 189);
+   width: 100%;
+   height: 150px;
+   border-radius: 5px;
+
+   background-position: center center;
+   background-repeat: no-repeat;
+}
+
+.link
+{
+   width: 100%;
+   text-align: center;
+}
+
+.but
+{
+   margin-left: auto;
+   margin-right: auto;
+   font-family: 'Ubuntu', sans-serif;
+   font-size: 15px;
+   text-decoration: none;
+}
+
+.but:hover
+{
+   background-color: #d6ffb5;
+   font-size: 16px;
+   font-family: 'Ubuntu', sans-serif;
+   text-decoration: none;
+}

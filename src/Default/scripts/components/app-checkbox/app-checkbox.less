@@ -1,0 +1,41 @@
+@import (reference) "/src/Default/styles/global-definitions.less";
+
+.checkbox {
+   display: inline-block;
+   position: relative;
+   width: 14px;
+   height: 14px;
+   border: 1px solid @color-gray-dark;
+   cursor: pointer;
+}
+
+.checkbox:not([disabled="true"]):hover {
+   border-color: @color-blue-dark;
+   background: rgb(245,245,245);
+}
+
+.checkbox[checked="true"] {
+   border-color: @color-blue-dark;
+}
+
+.checkbox[checked="true"]::before {
+   content: "";
+   display: block;
+   position: absolute;
+   left: 3px;
+   top: 0px;
+   width: 4px;
+   height: 8px;
+   border: 2px solid @color-blue-dark;
+   border-style: none solid solid none;
+   transform: rotate(45deg);
+}
+
+.checkbox[disabled="true"] {
+   background: @color-gray-normal;
+   border-color: @color-gray-dark;
+}
+
+.checkbox[disabled="true"][checked="true"]::before {
+   border-color: @color-gray-darkest;
+}

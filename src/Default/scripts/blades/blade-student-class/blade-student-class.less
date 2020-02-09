@@ -1,0 +1,162 @@
+@import (reference) "/src/Default/styles/global-definitions.less";
+
+.toolbar {
+   display: flex;
+   align-items: center;
+   position: relative;
+   flex-grow: 0;
+   flex-shrink: 0;
+   margin-bottom: @padding-normal;
+   white-space: nowrap;
+}
+
+.button-group {
+}
+
+.button-group > button {
+   width: 100px;
+   min-width: 100px;
+   font-size: 12px;
+   white-space: nowrap;
+}
+
+.row {
+   margin: 1px 0px;
+   display: flex;
+}
+
+label {
+   flex-grow: 0;
+   flex-shrink: 0;
+   width: 90px;
+   height: 22px;
+   line-height: 22px;
+}
+
+input, textarea, select {
+   width: 450px;
+}
+
+textarea {
+   height: 80px;
+}
+
+h2 {
+   margin-bottom: @padding-normal;
+}
+
+.add-link {
+   margin-top: @padding-normal;
+}
+
+.remove-link {
+   visibility: hidden;
+   margin-left: @padding-big;
+}
+
+.text-row:hover > .remove-link {
+   visibility: visible;
+}
+
+app-checkbox {
+   margin-top: 3px;
+}
+
+.text-row {
+   margin: @padding-normal/2 0px;
+}
+
+.expand{
+   height: 120px;
+}
+
+.filtered-search-group
+{
+   margin-top: 50px;
+   position: relative;
+   display: inline-flex;
+   width: 100%;
+   height: 180px;
+   margin-bottom: 10px;
+}
+
+.lead-teacher-box
+{
+   padding: 8px;
+   background-color: #fff87a;
+   width: max-content;
+   border-radius: 10px;
+   -webkit-box-shadow: 0px 0px 11px 0px rgba(0,0,0,0.1);
+   -moz-box-shadow: 0px 0px 11px 0px rgba(0,0,0,0.1);
+   box-shadow: 0px 0px 11px 0px rgba(0,0,0,0.1);
+}
+
+.active-checkbox
+{
+   position: relative;
+   padding: 8px;
+   display: inline-block;
+   border-radius: 10px;
+
+   -webkit-box-shadow: 0px 0px 11px 0px rgba(0,0,0,0.1);
+   -moz-box-shadow: 0px 0px 11px 0px rgba(0,0,0,0.1);
+   box-shadow: 0px 0px 11px 0px rgba(0,0,0,0.1);
+}
+
+.sidebar-group
+{
+   position: absolute;
+   right: 0;
+   display: inline-flex;
+   margin-right: 20px;
+   margin-top: 60px;
+
+   div
+   {
+      margin-left: 2.5px;
+      margin-right: 2.5px;
+   }
+}
+
+.active
+{
+   background-color: rgb(142, 255, 122);
+}
+
+.inactive
+{
+   background-color: rgb(250, 142, 142);
+}
+
+.information-block
+{
+   padding-left: 20px;
+   margin-top: 0;
+
+   .but
+   {
+      i
+      {
+         width: 20px;
+         padding-right: 5px;
+      }
+   }
+}
+
+.search-grouping
+{
+   position: relative;
+   padding: 5px 10px 10px 10px;
+   height: 100%;
+   width: 49%;
+   display: inline-flex;
+   border-radius: 5px;
+   border: 1px solid black;
+   background-color: white;
+   margin: auto;
+
+   app-complex-search
+   {
+      width: 100%;
+   }
+}

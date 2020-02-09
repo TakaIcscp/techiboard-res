@@ -1,0 +1,41 @@
+<!-- ko if: $blade.loading() -->
+<app-spinner class="-ns-fill-all"></app-spinner>
+<!-- /ko -->
+
+<!-- ko if: !$blade.loading() -->
+<div class="g-icon-bubble">
+    <i class="fas fa-user-cog"></i>
+</div>
+
+<div class="toolbar">
+    <div class="button-group">
+        <button data-bind="click: $blade.save.bind($blade)"><i class="fa fa-plus"></i> Save</button>
+    </div>
+</div>
+
+<div class="-ns-margin-big" style="margin-top: 10px;">
+    <div class="row">
+        <div class="setting-combo">
+            <div class="title">Auto Collapse Categories: </div>
+            <app-checkbox params="checked: $blade.autoCollapse"></app-checkbox>
+        </div>
+    </div>
+
+    <div class="legend">
+        Uncheck this if you don't want the sidebar categories to auto collapse when opening new ones.
+    </div>
+</div>
+
+<div class="-ns-margin-big" style="margin-top: 10px;">
+    <div class="row">
+        <div class="setting-combo">
+            <div class="title">Themes: </div>
+            <select data-bind="options: $blade.presets, value: $blade.selectedPreset"></select>
+        </div>
+    </div>
+
+    <div class="legend">
+        Select a theme and press and save to change the dashboard colouring.
+    </div>
+</div>
+<!-- /ko -->

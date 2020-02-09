@@ -1,0 +1,26 @@
+<div class="dropdown">
+   <div class="-ns-link" data-bind="click: $component.toggleOpened.bind($component)">
+      <span class="dropdown-text" data-bind="text: $component.title(),
+                                             attr: {
+                                                title: $component.title(),
+                                                'can-open': $component.canOpen ? 'true': 'false'
+                                             }"></span>
+      <!-- ko if: $component.canOpen -->
+      <i class="fas fa-sort-down" data-bind="attr: {'opened': $component.isOpened()}"></i>
+      <!-- /ko -->
+   </div>
+
+   <!-- ko if: isOpened() -->
+   <div class="popup-block" data-bind="attr: {'position': $component.position}">
+      <iframe></iframe>
+      <div class="popup" data-bind="attr: {'position': $component.position}">
+         <div data-bind="template: { nodes: $componentTemplateNodes, afterRender: $component.afterPopupRendered.bind($component) }"></div>
+
+         <!-- ko if: $component.isLoading() -->
+         <app-spinner></app-spinner>
+         <!-- /ko -->
+      </div>
+      <!--<div class="popup-arrow" data-bind="attr: {'position': $component.position}"></div>-->
+   </div>
+   <!-- /ko -->
+</div>

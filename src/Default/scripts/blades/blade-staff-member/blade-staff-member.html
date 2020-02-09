@@ -1,0 +1,22 @@
+<div class="profile-image-container">
+    <!-- ko if: $blade.profileImage() == null -->
+    <i class="fas fa-user user-logo"></i>
+    <!-- /ko -->
+
+    <!-- ko if: $blade.profileImage() != null -->
+    <img data-bind="attr: { src: $blade.profileImage }">
+    <!-- /ko -->
+</div>
+
+<div class="centered-label" data-bind="text: $blade.position()"></div>
+
+<!-- ko if: $blade.about() != null -->
+<div style="margin-top: 20px;" class="centered-block-title"><b>About me</b></div>
+<div class="centered-block" data-bind="text: $blade.about()"></div>
+<!-- /ko -->
+
+<!-- ko if: $blade.email() != null || $blade.phoneNumber() != null -->
+<div style="margin-top: 30px;" class="centered-block-title"><b>Contact Information</b></div>
+<div class="centered-label" data-bind="text: $blade.email()"></div>
+<div class="centered-label" data-bind="text: $blade.phoneNumber()"></div>
+<!-- /ko -->

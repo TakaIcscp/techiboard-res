@@ -1,0 +1,168 @@
+@import (reference) "/src/Default/styles/global-definitions.less";
+
+.content
+{
+    width: 100%;
+    position: relative;
+    text-align: center;
+}
+
+.tabs
+{
+    position: relative;
+    margin: auto;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-bottom: 10px;
+    width: 80%;
+    text-align: center;
+    border-bottom: 1px rgb(149, 149, 149) solid;
+}
+
+.tab
+{
+    width: 140px;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    padding: 10px 20px 10px 20px;
+    transition: 0.3s ease;
+    background-color: white;
+    border-radius: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
+
+    &:hover
+    {
+        transition: 0.3s ease;
+        background-color: rgb(183, 214, 255);
+    }
+}
+
+.active
+{
+    background-color: rgb(183, 214, 255);
+}
+
+.filtered-row
+{
+    margin-top: 20px;
+    display: inline-flex;
+    height: 250px;
+    width: 100%;
+    text-align: center;
+
+    app-complex-search
+    {
+        margin-left: 10px;
+        margin-right: 10px;
+        width: 50%;
+    }
+}
+
+.filtered-row-full
+{
+    margin-bottom: 10px;
+    margin-top: 5px;
+    display: inline-flex;
+    height: 350px;
+    width: 100%;
+    text-align: center;
+
+    app-complex-search
+    {
+        margin: auto;
+        margin-top: 0;
+        margin-bottom: 0;
+        width: 30%;
+    }
+}
+
+.message-title
+{
+   margin-top: 10px;
+   text-align: center;
+   margin-bottom: 2px;
+   font-size: 19px;
+}
+
+.message-contents
+{
+   width: 80%;
+   margin: auto;
+   min-height: 100px;
+   resize: vertical;
+   padding: 10px;
+   font-size: 16px;
+   border-radius: 5px;
+}
+
+.send-button
+{
+   width: 80px;
+   margin: auto;
+   display: block;
+   margin-top: 10px;
+}
+
+.legend
+{
+    text-align: center;
+    font-size: 18px;
+    color: rgb(100, 100, 100);
+    font-style: italic;
+    font-family: @font-official;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.dropdown-box
+{
+    width: 150px;
+    height: 35px;
+    margin: auto;
+    margin-top: 20px;
+}
+
+.filter-edit-container
+{
+    height: 130px;
+    position: relative;
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid black;
+    background-color: white;
+    padding: 20px;
+    padding-top: 8px;
+}
+
+.title
+{
+    font-size: 20px;
+    text-align: center;
+}
+
+.filters-row
+{
+    position: relative;
+    text-align: center;;
+    padding: 20px;
+    padding-top: 5px;
+    display: inline-flex;
+
+    app-input
+    {
+        width: 80px;
+    }
+}
+
+.right-bubble
+{
+    position: relative;
+    width: 65%;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 0;
+    display: block;
+}
